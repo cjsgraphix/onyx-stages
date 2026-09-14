@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#FBFBFB] text-[#111827] antialiased selection:bg-[#000000] selection:text-[#FFFFFF] scroll-smooth">
+<html lang="en" class="bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-black selection:text-white scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,12 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo/favicon-32x32.png">
     <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -17,18 +23,18 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
-                        sans: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
-                        mono: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         brand: {
-                            black: "#000000",
-                            charcoal: "#111827",
-                            slate: "#374151",
-                            muted: "#4B5563",
-                            border: "#D1D5DB",
-                            surface: "#F9FAFB",
+                            black: "#09090B",
+                            dark: "#18181B",
+                            slate: "#27272A",
+                            muted: "#71717A",
+                            border: "#E4E4E7",
+                            surface: "#F4F4F5",
                             pure: "#FFFFFF"
                         }
                     }
@@ -38,107 +44,100 @@
     </script>
 
     <style>
-        html {
-            font-size: 18px;
-        }
-        @media (min-width: 1024px) {
-            html {
-                font-size: 19px;
-            }
-        }
-
-        * {
-            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
-        }
         body {
-            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
-            background-color: #FBFBFB;
-            color: #111827;
-            line-height: 1.5;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FAFAFA;
+            color: #09090B;
+            line-height: 1.6;
         }
 
-        .framer-grid {
-            background-size: 32px 32px;
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        .arch-grid {
+            background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
         }
 
-        .hairline-b { border-bottom: 1px solid #E5E7EB; }
-        .hairline-t { border-top: 1px solid #E5E7EB; }
-        .hairline-r { border-right: 1px solid #E5E7EB; }
-        .hairline-l { border-left: 1px solid #E5E7EB; }
+        .hairline-b { border-bottom: 1px solid #E4E4E7; }
+        .hairline-t { border-top: 1px solid #E4E4E7; }
+        .hairline-r { border-right: 1px solid #E4E4E7; }
+        .hairline-l { border-left: 1px solid #E4E4E7; }
 
-        .framer-card {
+        .luxury-card {
             background: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #E4E4E7;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .framer-card:hover {
-            border-color: #000000;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        .luxury-card:hover {
+            border-color: #18181B;
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06);
             transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="bg-[#FBFBFB] text-[#111827] overflow-x-hidden framer-grid">
+<body class="bg-[#FAFAFA] text-zinc-900 overflow-x-hidden arch-grid">
 
     <!-- Top Status Ribbon -->
-    <div class="w-full bg-[#FFFFFF] hairline-b text-sm text-[#4B5563] py-2.5 px-4 sm:px-8 flex justify-between items-center z-50 sticky top-0 shadow-sm">
+    <div class="w-full bg-white hairline-b text-xs text-zinc-500 py-2.5 px-4 sm:px-8 flex justify-between items-center z-50 sticky top-0 shadow-sm/50">
         <div class="flex items-center space-x-3 sm:space-x-4">
-            <span class="inline-flex items-center text-[#000000] font-bold tracking-wider uppercase">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#000000] animate-pulse mr-2"></span>
-                OFFICIAL SPRING 2027 FLEET LAUNCH // 8.5' × 24' BLACKOUT STAGE RIG
+            <span class="inline-flex items-center text-zinc-950 font-semibold tracking-wider uppercase text-[11px]">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
+                SPRING 2027 FLEET LAUNCH // 8.5' × 24' BLACKOUT STAGE
             </span>
-            <span class="hidden md:inline text-neutral-300">|</span>
-            <span class="hidden md:inline text-[#000000] font-bold uppercase tracking-wider">
+            <span class="hidden md:inline text-zinc-300">|</span>
+            <span class="hidden md:inline text-zinc-950 font-bold uppercase tracking-wider text-[11px]">
                 ITEMIZED PRODUCTION MATRIX
             </span>
-            <span class="hidden lg:inline text-neutral-300">|</span>
-            <span class="hidden lg:inline text-[#4B5563]">14,000# GVWR &bull; 100A SERVICE &bull; 18K BTU A/C</span>
+            <span class="hidden lg:inline text-zinc-300">|</span>
+            <span class="hidden lg:inline text-zinc-500 text-[11px]">14,000# GVWR &bull; 100A SERVICE &bull; SILENT BATTERY POWER</span>
         </div>
-        <div class="flex items-center space-x-4 text-sm">
-            <a href="index.html" class="text-[#000000] font-bold hover:underline flex items-center space-x-1">
-                <i class="fa-solid fa-arrow-left text-xs"></i>
-                <span>Back to Main Site</span>
+        <div class="flex items-center space-x-4 text-[11px]">
+            <a href="index.html" class="text-zinc-950 font-semibold hover:underline flex items-center space-x-1">
+                <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                <span>Back to Home</span>
             </a>
-            <span class="bg-[#000000] text-[#FFFFFF] px-3 py-1 rounded text-xs font-bold tracking-widest uppercase">NOW BOOKING 2027</span>
+            <span class="bg-zinc-950 text-white px-2.5 py-1 rounded-full font-bold tracking-widest uppercase text-[10px]">NOW BOOKING 2027</span>
         </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="bg-[#FFFFFF]/95 backdrop-blur-md hairline-b z-40 relative">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-24 flex items-center justify-between">
+    <header class="bg-white/90 backdrop-blur-md hairline-b z-40 relative">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-20 sm:h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3.5 group">
-                <div class="w-12 h-12 bg-[#000000] border border-neutral-800 rounded overflow-hidden shadow-sm transition-transform group-hover:scale-95 flex items-center justify-center">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden shadow-sm transition-transform group-hover:scale-95 flex items-center justify-center shrink-0">
                     <img src="assets/logo/onyx_stages_emblem.png" alt="Onyx Stages Crest" class="w-full h-full object-contain">
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-extrabold text-3xl tracking-tight text-[#000000] uppercase">ONYX <span class="text-[#6B7280]">STAGES</span></span>
-                    <span class="text-xs text-[#6B7280] tracking-widest uppercase">Itemized Production & Add-On Blueprint</span>
+                    <span class="font-display font-bold text-2xl sm:text-3xl tracking-tight text-zinc-950 uppercase leading-none">ONYX <span class="text-zinc-400">STAGES</span></span>
+                    <span class="text-[10px] sm:text-xs text-zinc-400 tracking-widest uppercase font-medium mt-1">Itemized Production & Add-On Blueprint</span>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-sm uppercase tracking-widest text-[#374151] font-bold">
-                <a href="#packages" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">01.</span><span>Tier Packages</span>
+            <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest text-zinc-600 font-semibold">
+                <a href="#packages" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">01.</span><span>Tier Packages</span>
                 </a>
-                <a href="#matrix" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">02.</span><span>Side-by-Side Matrix</span>
+                <a href="#matrix" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">02.</span><span>Side-by-Side Matrix</span>
                 </a>
-                <a href="#addons" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">03.</span><span>A La Carte Add-Ons</span>
+                <a href="#addons" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">03.</span><span>A La Carte Add-Ons</span>
                 </a>
-                <a href="#specs-detail" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">04.</span><span>Rig Specs</span>
+                <a href="#specs-detail" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">04.</span><span>Rig Specs</span>
                 </a>
-                <a href="index.html#calculator" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">05.</span><span>Calculator</span>
+                <a href="index.html#calculator" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">05.</span><span>Calculator</span>
                 </a>
             </nav>
 
-            <div class="flex items-center space-x-4">
-                <a href="index.html#reserve-section" class="px-6 py-3 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest transition shadow-sm">
+            <div class="flex items-center space-x-3">
+                <a href="index.html#reserve-section" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl text-xs uppercase tracking-wider transition shadow-sm">
                     Hold Your Date &rarr;
                 </a>
             </div>
@@ -146,25 +145,25 @@
     </header>
 
     <!-- SECTION 00: HEADER BANNER -->
-    <section class="py-16 hairline-b bg-[#FFFFFF]">
+    <section class="py-14 sm:py-20 hairline-b bg-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[PRODUCTION TIERS & ADD-ON CATALOG]</span>
-                    <h1 class="font-black text-4xl sm:text-5xl lg:text-6xl text-[#000000] uppercase mt-2 tracking-tight">Full Equipment Breakdown</h1>
-                    <p class="text-base text-[#4B5563] mt-3 max-w-2xl leading-relaxed">
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[PRODUCTION TIERS & ADD-ON CATALOG]</span>
+                    <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-zinc-950 uppercase mt-2 tracking-tight">Full Equipment Breakdown</h1>
+                    <p class="text-sm sm:text-base text-zinc-600 mt-3 max-w-2xl leading-relaxed">
                         Complete transparent overview of what is included in every rental package, our comprehensive 40-point side-by-side comparison matrix, and our full a la carte add-on menu.
                     </p>
                 </div>
                 <div class="flex flex-wrap gap-3">
-                    <a href="Onyx_Stages_Master_Equipment_List.pdf" download class="px-5 py-3 bg-[#000000] hover:bg-[#374151] text-white text-sm font-bold uppercase tracking-wider rounded transition shadow-sm flex items-center space-x-2">
+                    <a href="Onyx_Stages_Master_Equipment_List.pdf" download class="px-5 py-3 bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-semibold uppercase tracking-wider rounded-xl transition shadow-sm flex items-center space-x-2">
                         <i class="fa-solid fa-file-pdf text-red-400"></i>
                         <span>Download Equipment PDF &darr;</span>
                     </a>
-                    <a href="#matrix" class="px-5 py-3 bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[#000000] text-sm font-bold uppercase tracking-wider rounded border border-[#D1D5DB] transition">
+                    <a href="#matrix" class="px-5 py-3 bg-zinc-50 hover:bg-zinc-100 text-zinc-900 text-xs font-semibold uppercase tracking-wider rounded-xl border border-zinc-200 transition">
                         Comparison Matrix &darr;
                     </a>
-                    <a href="index.html#calculator" class="px-5 py-3 bg-[#FFFFFF] hover:bg-[#F9FAFB] text-[#000000] border-2 border-[#000000] text-sm font-bold uppercase tracking-wider rounded transition">
+                    <a href="index.html#calculator" class="px-5 py-3 bg-white hover:bg-zinc-50 text-zinc-900 border border-zinc-300 text-xs font-semibold uppercase tracking-wider rounded-xl transition">
                         Open Rate Engine &rarr;
                     </a>
                 </div>
@@ -173,13 +172,13 @@
     </section>
 
     <!-- SECTION 01: THE 3 CORE PACKAGES -->
-    <section id="packages" class="py-20 hairline-b bg-[#FBFBFB]">
+    <section id="packages" class="py-20 sm:py-28 hairline-b bg-zinc-50/50">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="mb-14">
-                <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[01 // THREE TURNKEY TIERS]</span>
-                <h2 class="font-black text-3xl sm:text-4xl text-[#000000] uppercase mt-1.5">Choose Your Level of Production</h2>
-                <p class="text-sm text-[#6B7280] mt-2 max-w-xl">
+            <div class="mb-12 sm:mb-16">
+                <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[01 // THREE TURNKEY TIERS]</span>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-zinc-950 uppercase mt-2">Choose Your Level of Production</h2>
+                <p class="text-sm text-zinc-600 mt-2 max-w-xl">
                     Every package includes the full 8.5' × 24' trailer rig, motorized fold-out stage, perimeter safety guardrails, and regional delivery within 30 miles.
                 </p>
             </div>
@@ -187,141 +186,141 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
                 <!-- TIER 1: DRY STAGE -->
-                <div class="framer-card rounded-lg p-8 flex flex-col justify-between border border-[#D1D5DB] relative bg-[#FFFFFF]">
+                <div class="luxury-card rounded-2xl p-7 sm:p-8 flex flex-col justify-between border border-zinc-200 bg-white shadow-sm/50">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-widest text-[#6B7280]">[TIER 1 // SELF-SERVE]</span>
-                                <h3 class="font-black text-2xl text-[#000000] uppercase mt-1">THE DRY STAGE</h3>
+                                <span class="text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400">[TIER 1 // SELF-SERVE]</span>
+                                <h3 class="font-display font-bold text-2xl text-zinc-950 uppercase mt-1">THE DRY STAGE</h3>
                             </div>
-                            <span class="text-xs bg-[#F3F4F6] text-[#374151] px-3 py-1 rounded font-bold uppercase">AV-READY</span>
+                            <span class="text-[10px] bg-zinc-100 text-zinc-700 px-3 py-1 rounded-full font-bold uppercase tracking-wider">AV-READY</span>
                         </div>
 
                         <div class="space-y-1">
-                            <div class="text-xs text-[#6B7280] uppercase tracking-wider">SINGLE-DAY RATE</div>
-                            <div class="font-black text-4xl text-[#000000]">$1,450 <span class="text-sm font-normal text-[#6B7280]">/ Day</span></div>
-                            <div class="text-xs text-[#6B7280]">2-Day Weekend: $2,400 &bull; 3-Day Festival: $3,200</div>
+                            <div class="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">SINGLE-DAY RATE</div>
+                            <div class="font-display font-bold text-4xl text-zinc-950">$1,450 <span class="text-sm font-normal text-zinc-400 font-sans">/ Day</span></div>
+                            <div class="text-xs text-zinc-500">2-Day Weekend: $2,400 &bull; 3-Day Festival: $3,200</div>
                         </div>
 
-                        <p class="text-xs text-[#4B5563] leading-relaxed border-t border-b border-[#E5E7EB] py-3.5">
+                        <p class="text-xs text-zinc-600 leading-relaxed border-t border-b border-zinc-200/80 py-4">
                             Ideal for touring acts, production companies, and festivals with their own sound engineers, PA speakers, and backline gear who need a premium, fast-deploying stage footprint.
                         </p>
 
                         <div class="space-y-3 text-xs">
-                            <div class="font-bold text-[#000000] uppercase tracking-wider">WHAT'S INCLUDED:</div>
-                            <ul class="space-y-2 text-[#374151]">
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>16' Motorized Fold-Out Stage Deck</strong> with winched assist</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>8' Rear Ramp Stage Deck</strong> (DJ wing / VIP podium / riser)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>48" Black Powder-Coated Safety Guardrails</strong> around entire deck</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Dual Entry Steps with Handrails</strong> (front & rear stage access)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>18' Armless Power Awning</strong> with push-button deployment</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>50A Shore Power Hookup Cable</strong> (50-foot heavy-duty line)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Regional Delivery & Hydraulic Leveling</strong> (first 30 miles)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Post-Event Teardown & Retrieval</strong></span></li>
+                            <div class="font-bold text-zinc-950 uppercase tracking-wider font-mono text-[11px]">WHAT'S INCLUDED:</div>
+                            <ul class="space-y-2 text-zinc-700">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>16' Motorized Fold-Out Stage Deck</strong> with winched assist</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>8' Rear Ramp Stage Deck</strong> (DJ wing / VIP podium / riser)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>48" Black Powder-Coated Safety Guardrails</strong> around entire deck</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Dual Entry Steps with Handrails</strong> (front & rear stage access)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>18' Armless Power Awning</strong> with push-button deployment</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>50A Shore Power Hookup Cable</strong> (50-foot heavy-duty line)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Regional Delivery & Leveling</strong> (first 30 miles)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Post-Event Teardown & Retrieval</strong></span></li>
                             </ul>
 
-                            <div class="pt-2 text-neutral-400">
-                                <div class="font-bold text-[#6B7280] uppercase tracking-wider mb-1">CLIENT PROVIDES:</div>
-                                <div class="text-[#6B7280]">PA sound system, microphones, lighting fixtures, video screens, sound engineer, and generator (unless added a la carte).</div>
+                            <div class="pt-3">
+                                <div class="font-bold text-zinc-400 uppercase tracking-wider font-mono text-[10px] mb-1">CLIENT PROVIDES:</div>
+                                <div class="text-zinc-500">PA sound system, microphones, lighting fixtures, video screens, sound engineer, and generator (unless added a la carte).</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-6 mt-6 hairline-t">
-                        <a href="index.html#calculator" class="w-full py-3 bg-[#FFFFFF] hover:bg-[#000000] hover:text-white text-[#000000] border-2 border-[#000000] font-bold rounded text-xs uppercase tracking-widest flex items-center justify-center transition">
+                        <a href="index.html#calculator" class="w-full py-3.5 bg-white hover:bg-zinc-950 hover:text-white text-zinc-950 border border-zinc-300 hover:border-zinc-950 font-semibold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center transition">
                             Configure Dry Stage &rarr;
                         </a>
                     </div>
                 </div>
 
                 <!-- TIER 2: TURNKEY LIVE (POPULAR) -->
-                <div class="framer-card rounded-lg p-8 flex flex-col justify-between border-2 border-[#000000] relative bg-[#FFFFFF] shadow-lg">
-                    <span class="absolute -top-3 right-6 bg-[#000000] text-white text-[11px] font-bold px-3 py-1 uppercase rounded tracking-widest shadow">
+                <div class="luxury-card rounded-2xl p-7 sm:p-8 flex flex-col justify-between border-2 border-zinc-950 relative bg-white shadow-md">
+                    <span class="absolute -top-3 right-6 bg-zinc-950 text-white text-[10px] font-bold px-3 py-1 uppercase rounded-full tracking-widest shadow">
                         ★ MOST POPULAR
                     </span>
 
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-widest text-[#000000]">[TIER 2 // FULL CONCERT RIG]</span>
-                                <h3 class="font-black text-2xl text-[#000000] uppercase mt-1">TURNKEY LIVE</h3>
+                                <span class="text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-950">[TIER 2 // FULL CONCERT RIG]</span>
+                                <h3 class="font-display font-bold text-2xl text-zinc-950 uppercase mt-1">TURNKEY LIVE</h3>
                             </div>
                         </div>
 
                         <div class="space-y-1">
-                            <div class="text-xs text-[#6B7280] uppercase tracking-wider">SINGLE-DAY RATE</div>
-                            <div class="font-black text-4xl text-[#000000]">$2,750 <span class="text-sm font-normal text-[#6B7280]">/ Day</span></div>
-                            <div class="text-xs text-[#6B7280]">2-Day Weekend: $4,600 &bull; 3-Day Festival: $5,950</div>
+                            <div class="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">SINGLE-DAY RATE</div>
+                            <div class="font-display font-bold text-4xl text-zinc-950">$2,750 <span class="text-sm font-normal text-zinc-400 font-sans">/ Day</span></div>
+                            <div class="text-xs text-zinc-500">2-Day Weekend: $4,600 &bull; 3-Day Festival: $5,950</div>
                         </div>
 
-                        <p class="text-xs text-[#4B5563] leading-relaxed border-t border-b border-[#E5E7EB] py-3.5">
+                        <p class="text-xs text-zinc-600 leading-relaxed border-t border-b border-zinc-200/80 py-4">
                             Everything needed for a complete live concert, municipal festival, sports event, or corporate keynote. Zero outside AV gear required.
                         </p>
 
                         <div class="space-y-3 text-xs">
-                            <div class="font-bold text-[#000000] uppercase tracking-wider">WHAT'S INCLUDED:</div>
-                            <ul class="space-y-2 text-[#111827]">
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Everything in Tier 1 Dry Stage</strong> (16' + 8' decks, rails, stairs, awning)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>High-Output PA Sound System</strong> (2x 15" Powered Tops + 18" Subwoofer)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Digital Audio Mixer with iPad Remote Control</strong></span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>4x Solid UHF Wireless Handheld Microphones</strong> (Metal chassis, auto-scan & boom stands)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>4x High-Output LED RGBW Stage Wash Lights</strong> with controller</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>75" Outdoor 4K Video Display</strong> (Sponsor reels / live video / keynote slides)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>50A Super-Quiet Inverter Generator / Silent Battery Station</strong> (fuel included)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>On-Site AV Technician for Setup & Sound Check</strong></span></li>
+                            <div class="font-bold text-zinc-950 uppercase tracking-wider font-mono text-[11px]">WHAT'S INCLUDED:</div>
+                            <ul class="space-y-2 text-zinc-800">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Everything in Tier 1 Dry Stage</strong> (16' + 8' decks, rails, stairs, awning)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>High-Output PA Sound System</strong> (2x 15" Powered Tops + 18" Subwoofer)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Digital Audio Mixer with iPad Remote Control</strong></span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>4x Solid UHF Wireless Handheld Microphones</strong> (Metal chassis & auto-scan)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>4x High-Output LED RGBW Stage Wash Lights</strong> with controller</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>75" Outdoor 4K Video Display</strong> (Sponsor reels / live slides)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>50A Quiet Inverter Generator / Battery Power</strong> (fuel included)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>On-Site AV Technician for Setup & Sound Check</strong></span></li>
                             </ul>
 
-                            <div class="pt-2 text-neutral-500">
-                                <div class="font-bold text-[#374151] uppercase tracking-wider mb-1">OPTIONAL ADD-ONS:</div>
-                                <div class="text-[#6B7280]">All-day live band mixing engineer (+$600), Custom banner skirt (+$850), Dual stage monitor wedges (+$350).</div>
+                            <div class="pt-3">
+                                <div class="font-bold text-zinc-500 uppercase tracking-wider font-mono text-[10px] mb-1">OPTIONAL ADD-ONS:</div>
+                                <div class="text-zinc-500">Live sound mixing engineer (+$600), Custom banner skirt (+$850), Dual stage monitor wedges (+$350).</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-6 mt-6 hairline-t">
-                        <a href="index.html#calculator" class="w-full py-3.5 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-xs uppercase tracking-widest flex items-center justify-center transition shadow-sm">
+                        <a href="index.html#calculator" class="w-full py-3.5 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center transition shadow-sm">
                             Configure Turnkey Live &rarr;
                         </a>
                     </div>
                 </div>
 
                 <!-- TIER 3: BRAND VIP & ROADSHOW TOUR -->
-                <div class="framer-card rounded-lg p-8 flex flex-col justify-between border border-[#D1D5DB] relative bg-[#FFFFFF]">
+                <div class="luxury-card rounded-2xl p-7 sm:p-8 flex flex-col justify-between border border-zinc-200 bg-white shadow-sm/50">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-widest text-[#6B7280]">[TIER 3 // EXPERIENTIAL B2B]</span>
-                                <h3 class="font-black text-2xl text-[#000000] uppercase mt-1">BRAND VIP & TOUR</h3>
+                                <span class="text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400">[TIER 3 // EXPERIENTIAL B2B]</span>
+                                <h3 class="font-display font-bold text-2xl text-zinc-950 uppercase mt-1">BRAND VIP & TOUR</h3>
                             </div>
-                            <span class="text-xs bg-[#111827] text-white px-3 py-1 rounded font-bold uppercase">VIP LOUNGE</span>
+                            <span class="text-[10px] bg-zinc-950 text-white px-3 py-1 rounded-full font-bold uppercase tracking-wider">VIP LOUNGE</span>
                         </div>
 
                         <div class="space-y-1">
-                            <div class="text-xs text-[#6B7280] uppercase tracking-wider">WEEKEND ACTIVATION / TOUR RATE</div>
-                            <div class="font-black text-4xl text-[#000000]">$4,500 <span class="text-sm font-normal text-[#6B7280]">/ Day</span></div>
-                            <div class="text-xs text-[#6B7280]">1-Week Tour: $9,500 &bull; 30-Day Multi-City: $24,000–$32,000/mo</div>
+                            <div class="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">WEEKEND ACTIVATION / TOUR RATE</div>
+                            <div class="font-display font-bold text-4xl text-zinc-950">$4,500 <span class="text-sm font-normal text-zinc-400 font-sans">/ Day</span></div>
+                            <div class="text-xs text-zinc-500">1-Week Tour: $9,500 &bull; 30-Day Multi-City: $24,000–$32,000/mo</div>
                         </div>
 
-                        <p class="text-xs text-[#4B5563] leading-relaxed border-t border-b border-[#E5E7EB] py-3.5">
+                        <p class="text-xs text-zinc-600 leading-relaxed border-t border-b border-zinc-200/80 py-4">
                             Turnkey mobile brand experience designed for marketing agencies, beverage roadshows, festival VIP stages, and multi-city promotional tours.
                         </p>
 
                         <div class="space-y-3 text-xs">
-                            <div class="font-bold text-[#000000] uppercase tracking-wider">WHAT'S INCLUDED:</div>
-                            <ul class="space-y-2 text-[#374151]">
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Everything in Tier 2 Turnkey Live Rig</strong> (Full PA, Mics, 75" 4K TV, Lighting)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Insulated Private Green Room & Staging Cabin</strong> (100A Dedicated Power & LED Lighting)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Dedicated Full-Day On-Site Sound Engineer & Stage Manager</strong> (full event coverage)</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Custom Sponsor Magnet / Banner Kit Prep & Installation</strong></span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Continuous Power Package</strong> with silent high-output generator & redundant battery backup</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Interior Presentation Bar & VIP Seating</strong> with non-skid flooring & LED accent lighting</span></li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-black mt-0.5 mr-2.5"></i><span><strong>Multi-City Logistics Coordination & Priority Tour Scheduling</strong></span></li>
+                            <div class="font-bold text-zinc-950 uppercase tracking-wider font-mono text-[11px]">WHAT'S INCLUDED:</div>
+                            <ul class="space-y-2 text-zinc-700">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Everything in Tier 2 Turnkey Live Rig</strong> (Full PA, Mics, 75" 4K TV, Lighting)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Insulated Private Green Room & Staging Cabin</strong> (100A Panel & LED Lighting)</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Dedicated Full-Day Sound Engineer & Stage Manager</strong></span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Custom Sponsor Magnet / Banner Kit Prep & Installation</strong></span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Continuous Power Package</strong> with silent generator & redundant battery backup</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Interior Presentation Bar & VIP Seating</strong> with non-skid flooring</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-zinc-950 mt-0.5 mr-2.5"></i><span><strong>Multi-City Logistics Coordination & Priority Tour Scheduling</strong></span></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="pt-6 mt-6 hairline-t">
-                        <a href="index.html#calculator" class="w-full py-3 bg-[#FFFFFF] hover:bg-[#000000] hover:text-white text-[#000000] border-2 border-[#000000] font-bold rounded text-xs uppercase tracking-widest flex items-center justify-center transition">
+                        <a href="index.html#calculator" class="w-full py-3.5 bg-white hover:bg-zinc-950 hover:text-white text-zinc-950 border border-zinc-300 hover:border-zinc-950 font-semibold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center transition">
                             Configure Brand VIP &rarr;
                         </a>
                     </div>
@@ -333,202 +332,202 @@
     </section>
 
     <!-- SECTION 02: 40-POINT SIDE-BY-SIDE COMPARISON MATRIX -->
-    <section id="matrix" class="py-24 hairline-b bg-[#FFFFFF]">
+    <section id="matrix" class="py-20 sm:py-28 hairline-b bg-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[02 // SIDE-BY-SIDE MATRIX]</span>
-                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Itemized Feature Comparison</h2>
-                    <p class="text-sm text-[#6B7280] mt-2 max-w-xl">
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[02 // SIDE-BY-SIDE MATRIX]</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-zinc-950 uppercase mt-2">Itemized Feature Comparison</h2>
+                    <p class="text-sm text-zinc-600 mt-2 max-w-xl">
                         Compare every technical specification, audio component, display, power option, and labor service across all three tiers.
                     </p>
                 </div>
                 <div>
-                    <span class="text-xs bg-[#000000] text-white font-bold px-4 py-2 uppercase tracking-widest rounded inline-block">
+                    <span class="text-[10px] bg-zinc-950 text-white font-bold px-3.5 py-1.5 uppercase tracking-widest rounded-full inline-block">
                         ONYX FLEET SPECIFICATION
                     </span>
                 </div>
             </div>
 
             <!-- Comparison Table -->
-            <div class="border border-[#D1D5DB] rounded-lg overflow-hidden bg-[#FFFFFF] shadow-sm">
+            <div class="border border-zinc-200/90 rounded-2xl overflow-hidden bg-white shadow-sm">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-sm">
                         
                         <!-- Table Header -->
                         <thead>
-                            <tr class="bg-[#111827] text-white uppercase text-xs tracking-wider">
-                                <th class="py-4 px-6 font-bold w-2/5">SYSTEM / SPECIFICATION</th>
-                                <th class="py-4 px-4 font-bold text-center w-1/5 bg-[#1F2937]">TIER 1: DRY STAGE<br><span class="text-neutral-400 font-normal">$1,450/day</span></th>
-                                <th class="py-4 px-4 font-bold text-center w-1/5 bg-[#000000] border-x border-neutral-700">TIER 2: TURNKEY LIVE<br><span class="text-neutral-300 font-normal">$2,750/day</span></th>
-                                <th class="py-4 px-4 font-bold text-center w-1/5 bg-[#1F2937]">TIER 3: BRAND VIP<br><span class="text-neutral-400 font-normal">$4,500/day</span></th>
+                            <tr class="bg-zinc-950 text-white uppercase text-xs tracking-wider">
+                                <th class="py-4 px-6 font-semibold w-2/5">SYSTEM / SPECIFICATION</th>
+                                <th class="py-4 px-4 font-semibold text-center w-1/5 bg-zinc-900">TIER 1: DRY STAGE<br><span class="text-zinc-400 font-normal text-[11px]">$1,450/day</span></th>
+                                <th class="py-4 px-4 font-semibold text-center w-1/5 bg-zinc-950 border-x border-zinc-800">TIER 2: TURNKEY LIVE<br><span class="text-zinc-300 font-normal text-[11px]">$2,750/day</span></th>
+                                <th class="py-4 px-4 font-semibold text-center w-1/5 bg-zinc-900">TIER 3: BRAND VIP<br><span class="text-zinc-400 font-normal text-[11px]">$4,500/day</span></th>
                             </tr>
                         </thead>
 
-                        <tbody class="divide-y divide-[#E5E7EB] text-xs sm:text-sm">
+                        <tbody class="divide-y divide-zinc-200/80 text-xs sm:text-sm">
                             
                             <!-- CATEGORY 1: STAGE & RIGGING -->
-                            <tr class="bg-[#F9FAFB] font-bold text-[#000000] uppercase text-xs tracking-wider">
+                            <tr class="bg-zinc-50 font-bold text-zinc-950 uppercase text-[11px] font-mono tracking-wider">
                                 <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-truck-ramp-box mr-2"></i> 1. STAGE ARCHITECTURE & SAFETY</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Trailer Dimensions</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">8.5' × 24' Heavy Duty</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">8.5' × 24' Heavy Duty</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">8.5' × 24' Heavy Duty</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Trailer Dimensions</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">8.5' × 24' Heavy Duty</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">8.5' × 24' Heavy Duty</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">8.5' × 24' Heavy Duty</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Main Fold-Out Stage Deck</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">16' Motorized Winch Assist</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">16' Motorized Winch Assist</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">16' Motorized Winch Assist</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Main Fold-Out Stage Deck</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">16' Motorized Winch Assist</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">16' Motorized Winch Assist</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">16' Motorized Winch Assist</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Secondary Rear Stage / Ramp Deck</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">8' Winch Assist (DJ / VIP)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">8' Winch Assist (DJ / VIP)</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">8' Winch Assist (DJ / VIP)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Secondary Rear Stage / Ramp Deck</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">8' Winch Assist (DJ / VIP)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">8' Winch Assist (DJ / VIP)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">8' Winch Assist (DJ / VIP)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Perimeter Safety Guardrails</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">48" Black Powder-Coated</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">48" Black Powder-Coated</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">48" Black Powder-Coated</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Perimeter Safety Guardrails</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">48" Black Powder-Coated</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">48" Black Powder-Coated</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">48" Black Powder-Coated</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Entry Stairs with Handrails</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">2 Sets (Front & Rear)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">2 Sets (Front & Rear)</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">2 Sets (Front & Rear)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Entry Stairs with Handrails</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">2 Sets (Front & Rear)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">2 Sets (Front & Rear)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">2 Sets (Front & Rear)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Weather Awning Coverage</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">18' Armless Power Awning</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">18' Armless Power Awning</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">18' Armless Power Awning</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Weather Awning Coverage</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">18' Armless Power Awning</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">18' Armless Power Awning</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">18' Armless Power Awning</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Axle & Towing Rating</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">Dual 7,000# Axles (14k GVWR)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">Dual 7,000# Axles (14k GVWR)</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">Dual 7,000# Axles (14k GVWR)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Axle & Towing Rating</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">Dual 7,000# Axles (14k GVWR)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">Dual 7,000# Axles (14k GVWR)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">Dual 7,000# Axles (14k GVWR)</td>
                             </tr>
 
                             <!-- CATEGORY 2: AUDIO & SOUND GEAR -->
-                            <tr class="bg-[#F9FAFB] font-bold text-[#000000] uppercase text-xs tracking-wider">
+                            <tr class="bg-zinc-50 font-bold text-zinc-950 uppercase text-[11px] font-mono tracking-wider">
                                 <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-volume-high mr-2"></i> 2. PROFESSIONAL AUDIO & MICROPHONES</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Front of House (FOH) PA Sound Tops</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Client Supplies (or +$500 add-on)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">2x 15" High-Output Powered Tops</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">2x 15" High-Output Powered Tops</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Front of House (FOH) PA Sound Tops</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Client Supplies (or +$500)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">2x 15" High-Output Powered Tops</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">2x 15" High-Output Powered Tops</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Subwoofer Package</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Client Supplies (or +$350 add-on)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">1x 18" Powered Subwoofer</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">2x 18" Powered Subwoofers</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Subwoofer Package</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Client Supplies (or +$350)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">1x 18" Powered Subwoofer</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">2x 18" Powered Subwoofers</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Digital Audio Console / Mixer</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Client Supplies</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">16-Ch Digital Mixer + iPad</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">32-Ch Digital Mixer + iPad</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Digital Audio Console / Mixer</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Client Supplies</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">16-Ch Digital Mixer + iPad</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">32-Ch Digital Mixer + iPad</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Wireless Microphones</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Client Supplies</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">4x Solid Wireless Handheld Mics</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">6x Solid Wireless Mics (4 Handheld + 2 Lapel)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Wireless Microphones</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Client Supplies</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">4x Solid Wireless Handheld Mics</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">6x Solid Wireless Mics (4 Handheld + 2 Lapel)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Stage Floor Wedge Monitors</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$350)</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563] bg-[#FBFBFB]">2x Active Wedge Monitors</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">4x Active Wedge Monitors</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Stage Floor Wedge Monitors</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$350)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600 bg-zinc-50/50">2x Active Wedge Monitors</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">4x Active Wedge Monitors</td>
                             </tr>
 
                             <!-- CATEGORY 3: VIDEO & LIGHTING -->
-                            <tr class="bg-[#F9FAFB] font-bold text-[#000000] uppercase text-xs tracking-wider">
+                            <tr class="bg-zinc-50 font-bold text-zinc-950 uppercase text-[11px] font-mono tracking-wider">
                                 <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-tv mr-2"></i> 3. VIDEO DISPLAYS & STAGE LIGHTING</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Outdoor 4K High-Brightness Display</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$300)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">75" Mounted 4K Display</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">75" 4K Display + Dual Stage Monitors</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Outdoor 4K High-Brightness Display</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$300)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">75" Mounted 4K Display</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">75" 4K Display + Dual Monitors</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Stage Wash Lighting</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Client Supplies</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">4x LED RGBW Stage Pars</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">8x LED DMX Pars + Stage Beam Bars</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Stage Wash Lighting</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Client Supplies</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">4x LED RGBW Stage Pars</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">8x LED DMX Pars + Stage Beam Bars</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Lighting Controller</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">—</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">Preset Wireless DMX</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Dedicated DMX Console</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Lighting Controller</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">—</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">Preset Wireless DMX</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Dedicated DMX Console</td>
                             </tr>
 
                             <!-- CATEGORY 4: POWER & CLIMATE -->
-                            <tr class="bg-[#F9FAFB] font-bold text-[#000000] uppercase text-xs tracking-wider">
-                                <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-bolt mr-2"></i> 4. POWER, ELECTRICAL & HVAC</td>
+                            <tr class="bg-zinc-50 font-bold text-zinc-950 uppercase text-[11px] font-mono tracking-wider">
+                                <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-bolt mr-2"></i> 4. POWER & ELECTRICAL ARCHITECTURE</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Electrical Service Panel</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">100A Panel + 20A Circuits</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">100A Panel + 20A Circuits</td>
-                                <td class="py-3.5 px-4 text-center text-[#4B5563]">100A Panel + 20A Circuits</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Electrical Service Panel</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">100A Panel + 20A Circuits</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">100A Panel + 20A Circuits</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-600">100A Panel + 20A Circuits</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Generator / Silent Battery Power</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$250)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">50A Super-Quiet Inverter / Battery</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Continuous Dual Power + Fuel Service</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Generator / Silent Battery Power</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$250)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">50A Super-Quiet Inverter / Battery</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Continuous Dual Power + Fuel Service</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Insulated Green Room & Staging Cabin</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Storage Only</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">Included (100A Panel + LED)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included (VIP Lounge Active)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Insulated Staging Cabin</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Storage Only</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">Included (100A Panel + LED)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included (VIP Lounge Active)</td>
                             </tr>
 
                             <!-- CATEGORY 5: CREW & BRANDING -->
-                            <tr class="bg-[#F9FAFB] font-bold text-[#000000] uppercase text-xs tracking-wider">
+                            <tr class="bg-zinc-50 font-bold text-zinc-950 uppercase text-[11px] font-mono tracking-wider">
                                 <td colspan="4" class="py-3 px-6"><i class="fa-solid fa-users mr-2"></i> 5. ON-SITE CREW, BRANDING & LOGISTICS</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Delivery, Leveling & Teardown</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included (30 Mi)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">Included (30 Mi)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included (30 Mi or Tour Base)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Delivery, Leveling & Teardown</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included (30 Mi)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">Included (30 Mi)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included (30 Mi or Tour Base)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">AV Setup & Sound Check Tech</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">—</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold bg-[#FBFBFB]">Included (Setup & Line Check)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">AV Setup & Sound Check Tech</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">—</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold bg-zinc-50/50">Included (Setup & Line Check)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Dedicated Full-Day Sound Engineer</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$600)</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF] bg-[#FBFBFB]">Optional Add-On (+$600)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included (Full Event Run)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Dedicated Full-Day Sound Engineer</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$600)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400 bg-zinc-50/50">Optional Add-On (+$600)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included (Full Event Run)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Custom Sponsor Magnet / Banner Kit</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$850)</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF] bg-[#FBFBFB]">Optional Add-On (+$850)</td>
-                                <td class="py-3.5 px-4 text-center text-[#000000] font-bold">Included (Custom Sponsor Kit)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Custom Sponsor Magnet / Banner Kit</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$850)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400 bg-zinc-50/50">Optional Add-On (+$850)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-950 font-bold">Included (Custom Sponsor Kit)</td>
                             </tr>
                             <tr>
-                                <td class="py-3.5 px-6 font-semibold text-[#111827]">Heavy-Duty Tow Truck Rental (3/4-Ton)</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$150/day)</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF] bg-[#FBFBFB]">Optional Add-On (+$150/day)</td>
-                                <td class="py-3.5 px-4 text-center text-[#9CA3AF]">Optional Add-On (+$150/day)</td>
+                                <td class="py-3.5 px-6 font-semibold text-zinc-950">Heavy-Duty Tow Truck Rental (3/4-Ton)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$150/day)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400 bg-zinc-50/50">Optional Add-On (+$150/day)</td>
+                                <td class="py-3.5 px-4 text-center text-zinc-400">Optional Add-On (+$150/day)</td>
                             </tr>
 
                         </tbody>
@@ -540,19 +539,19 @@
     </section>
 
     <!-- SECTION 03: FULL A LA CARTE ADD-ON MENU -->
-    <section id="addons" class="py-24 hairline-b bg-[#FBFBFB]">
+    <section id="addons" class="py-20 sm:py-28 hairline-b bg-zinc-50/50">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[03 // A LA CARTE ADD-ONS]</span>
-                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Production Add-On Catalog</h2>
-                    <p class="text-sm text-[#6B7280] mt-2 max-w-xl">
-                        Customize any base package with our high-margin, professional-grade production hardware and specialized on-site personnel.
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[03 // A LA CARTE ADD-ONS]</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-zinc-950 uppercase mt-2">Production Add-On Catalog</h2>
+                    <p class="text-sm text-zinc-600 mt-2 max-w-xl">
+                        Customize any base package with our professional-grade production hardware and specialized on-site personnel.
                     </p>
                 </div>
                 <div>
-                    <a href="index.html#calculator" class="px-5 py-3 bg-[#000000] hover:bg-[#374151] text-white text-xs font-bold uppercase tracking-widest rounded transition">
+                    <a href="index.html#calculator" class="px-5 py-3 bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-semibold uppercase tracking-wider rounded-xl transition">
                         Calculate with Add-Ons &rarr;
                     </a>
                 </div>
@@ -561,102 +560,102 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Add-On 1: Sound Engineer -->
-                <div class="framer-card rounded p-6 bg-[#FFFFFF] border border-[#D1D5DB] flex flex-col justify-between">
-                    <div class="space-y-3">
+                <div class="luxury-card rounded-2xl p-6 sm:p-7 bg-white border border-zinc-200 flex flex-col justify-between shadow-sm/50">
+                    <div class="space-y-3.5">
                         <div class="flex justify-between items-start">
-                            <div class="w-10 h-10 rounded bg-[#000000] text-white flex items-center justify-center text-base">
+                            <div class="w-10 h-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-sliders"></i>
                             </div>
-                            <span class="text-sm font-black text-[#000000]">$600 <span class="text-xs font-normal text-[#6B7280]">/ Day</span></span>
+                            <span class="text-sm font-bold text-zinc-950 font-display">$600 <span class="text-xs font-normal text-zinc-400 font-sans">/ Day</span></span>
                         </div>
-                        <h4 class="font-bold text-lg text-[#000000] uppercase">Dedicated Sound Engineer</h4>
-                        <p class="text-xs text-[#4B5563] leading-relaxed">
+                        <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Dedicated Sound Engineer</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Full-day professional audio engineer on-site for the duration of the event. Handles live multitrack band mixing, monitor wedges, wireless frequency coordination, and rapid stage changeovers.
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 hairline-t flex justify-between items-center text-xs">
-                        <span class="text-[#6B7280]">Included In: <strong class="text-black">Brand VIP</strong></span>
-                        <span class="bg-[#F3F4F6] text-[#000000] px-2 py-1 rounded font-bold uppercase">Labor Add-On</span>
+                    <div class="pt-4 mt-5 hairline-t flex justify-between items-center text-xs">
+                        <span class="text-zinc-500">Included In: <strong class="text-zinc-950">Brand VIP</strong></span>
+                        <span class="bg-zinc-100 text-zinc-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Labor Add-On</span>
                     </div>
                 </div>
 
                 <!-- Add-On 2: 75" Outdoor 4K Screen -->
-                <div class="framer-card rounded p-6 bg-[#FFFFFF] border border-[#D1D5DB] flex flex-col justify-between">
-                    <div class="space-y-3">
+                <div class="luxury-card rounded-2xl p-6 sm:p-7 bg-white border border-zinc-200 flex flex-col justify-between shadow-sm/50">
+                    <div class="space-y-3.5">
                         <div class="flex justify-between items-start">
-                            <div class="w-10 h-10 rounded bg-[#000000] text-white flex items-center justify-center text-base">
+                            <div class="w-10 h-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-tv"></i>
                             </div>
-                            <span class="text-sm font-black text-[#000000]">$300 <span class="text-xs font-normal text-[#6B7280]">/ Day</span></span>
+                            <span class="text-sm font-bold text-zinc-950 font-display">$300 <span class="text-xs font-normal text-zinc-400 font-sans">/ Day</span></span>
                         </div>
-                        <h4 class="font-bold text-lg text-[#000000] uppercase">75" Outdoor 4K Video Display</h4>
-                        <p class="text-xs text-[#4B5563] leading-relaxed">
+                        <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">75" Outdoor 4K Video Display</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Ultra-bright 4K display mounted to stage backer or trailer exterior. Includes commercial media player for sponsor logo loops, live keynote presentation slides, and live race leaderboards.
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 hairline-t flex justify-between items-center text-xs">
-                        <span class="text-[#6B7280]">Included In: <strong class="text-black">Turnkey & VIP</strong></span>
-                        <span class="bg-[#F3F4F6] text-[#000000] px-2 py-1 rounded font-bold uppercase">Video Add-On</span>
+                    <div class="pt-4 mt-5 hairline-t flex justify-between items-center text-xs">
+                        <span class="text-zinc-500">Included In: <strong class="text-zinc-950">Turnkey & VIP</strong></span>
+                        <span class="bg-zinc-100 text-zinc-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Video Add-On</span>
                     </div>
                 </div>
 
                 <!-- Add-On 3: Custom Sponsor Branding Kit -->
-                <div class="framer-card rounded p-6 bg-[#FFFFFF] border border-[#D1D5DB] flex flex-col justify-between">
-                    <div class="space-y-3">
+                <div class="luxury-card rounded-2xl p-6 sm:p-7 bg-white border border-zinc-200 flex flex-col justify-between shadow-sm/50">
+                    <div class="space-y-3.5">
                         <div class="flex justify-between items-start">
-                            <div class="w-10 h-10 rounded bg-[#000000] text-white flex items-center justify-center text-base">
+                            <div class="w-10 h-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-palette"></i>
                             </div>
-                            <span class="text-sm font-black text-[#000000]">$850 <span class="text-xs font-normal text-[#6B7280]">Flat</span></span>
+                            <span class="text-sm font-bold text-zinc-950 font-display">$850 <span class="text-xs font-normal text-zinc-400 font-sans">Flat</span></span>
                         </div>
-                        <h4 class="font-bold text-lg text-[#000000] uppercase">Custom Sponsor Branding Kit</h4>
-                        <p class="text-xs text-[#4B5563] leading-relaxed">
+                        <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Custom Sponsor Branding Kit</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Heavy-duty magnetic banners and stage skirting customized with your event or sponsor logos. Formatted specifically to the trailer's blackout aluminum dimensions for zero-damage clean mounting.
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 hairline-t flex justify-between items-center text-xs">
-                        <span class="text-[#6B7280]">Included In: <strong class="text-black">Brand VIP</strong></span>
-                        <span class="bg-[#F3F4F6] text-[#000000] px-2 py-1 rounded font-bold uppercase">Branding</span>
+                    <div class="pt-4 mt-5 hairline-t flex justify-between items-center text-xs">
+                        <span class="text-zinc-500">Included In: <strong class="text-zinc-950">Brand VIP</strong></span>
+                        <span class="bg-zinc-100 text-zinc-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Branding</span>
                     </div>
                 </div>
 
                 <!-- Add-On 4: Dual Stage Monitors & Subwoofer Package -->
-                <div class="framer-card rounded p-6 bg-[#FFFFFF] border border-[#D1D5DB] flex flex-col justify-between">
-                    <div class="space-y-3">
+                <div class="luxury-card rounded-2xl p-6 sm:p-7 bg-white border border-zinc-200 flex flex-col justify-between shadow-sm/50">
+                    <div class="space-y-3.5">
                         <div class="flex justify-between items-start">
-                            <div class="w-10 h-10 rounded bg-[#000000] text-white flex items-center justify-center text-base">
+                            <div class="w-10 h-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-compact-disc"></i>
                             </div>
-                            <span class="text-sm font-black text-[#000000]">$350 <span class="text-xs font-normal text-[#6B7280]">/ Day</span></span>
+                            <span class="text-sm font-bold text-zinc-950 font-display">$350 <span class="text-xs font-normal text-zinc-400 font-sans">/ Day</span></span>
                         </div>
-                        <h4 class="font-bold text-lg text-[#000000] uppercase">Stage Monitor & Dual Sub Upgrade</h4>
-                        <p class="text-xs text-[#4B5563] leading-relaxed">
+                        <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Stage Monitor & Sub Upgrade</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Adds 2x dedicated 12" active stage floor wedge monitors facing performers on the main deck, plus an additional 18" high-excursion subwoofer for festival-grade low-end punch.
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 hairline-t flex justify-between items-center text-xs">
-                        <span class="text-[#6B7280]">Available for: <strong class="text-black">All Tiers</strong></span>
-                        <span class="bg-[#F3F4F6] text-[#000000] px-2 py-1 rounded font-bold uppercase">Audio Expansion</span>
+                    <div class="pt-4 mt-5 hairline-t flex justify-between items-center text-xs">
+                        <span class="text-zinc-500">Available for: <strong class="text-zinc-950">All Tiers</strong></span>
+                        <span class="bg-zinc-100 text-zinc-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Audio Expansion</span>
                     </div>
                 </div>
 
                 <!-- Add-On 5: Heavy-Duty Tow Truck Rental -->
-                <div class="framer-card rounded p-6 bg-[#FFFFFF] border border-[#D1D5DB] flex flex-col justify-between">
-                    <div class="space-y-3">
+                <div class="luxury-card rounded-2xl p-6 sm:p-7 bg-white border border-zinc-200 flex flex-col justify-between shadow-sm/50">
+                    <div class="space-y-3.5">
                         <div class="flex justify-between items-start">
-                            <div class="w-10 h-10 rounded bg-[#000000] text-white flex items-center justify-center text-base">
+                            <div class="w-10 h-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-truck-pickup"></i>
                             </div>
-                            <span class="text-sm font-black text-[#000000]">$150 <span class="text-xs font-normal text-[#6B7280]">/ Day</span></span>
+                            <span class="text-sm font-bold text-zinc-950 font-display">$150 <span class="text-xs font-normal text-zinc-400 font-sans">/ Day</span></span>
                         </div>
-                        <h4 class="font-bold text-lg text-[#000000] uppercase">Heavy-Duty Tow Truck Rental</h4>
-                        <p class="text-xs text-[#4B5563] leading-relaxed">
+                        <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Heavy-Duty Tow Truck Rental</h4>
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Commercial 3/4-ton pickup truck equipped with Class V 2-5/16" hitch, 7-pin round wiring harness, and integrated electric trailer brake controller for seamless self-transport.
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 hairline-t flex justify-between items-center text-xs">
-                        <span class="text-[#6B7280]">Available for: <strong class="text-black">All Tiers</strong></span>
-                        <span class="bg-[#F3F4F6] text-[#000000] px-2 py-1 rounded font-bold uppercase">Vehicle Add-On</span>
+                    <div class="pt-4 mt-5 hairline-t flex justify-between items-center text-xs">
+                        <span class="text-zinc-500">Available for: <strong class="text-zinc-950">All Tiers</strong></span>
+                        <span class="bg-zinc-100 text-zinc-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Vehicle Add-On</span>
                     </div>
                 </div>
 
@@ -666,54 +665,54 @@
     </section>
 
     <!-- SECTION 04: RIG SPECIFICATIONS & VENUE REQUIREMENTS -->
-    <section id="specs-detail" class="py-20 hairline-b bg-[#FFFFFF]">
+    <section id="specs-detail" class="py-20 sm:py-28 hairline-b bg-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[04 // LOGISTICS & VENUE REQUIREMENTS]</span>
-                    <h2 class="font-black text-3xl sm:text-4xl text-[#000000] uppercase mt-1.5">Site Footprint & Technical Guidelines</h2>
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[04 // LOGISTICS & VENUE REQUIREMENTS]</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-zinc-950 uppercase mt-1.5">Site Footprint & Technical Guidelines</h2>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
                 
-                <div class="p-6 bg-[#F9FAFB] border border-[#E5E7EB] rounded space-y-2">
-                    <div class="font-bold text-sm text-[#000000] uppercase flex items-center">
-                        <i class="fa-solid fa-ruler-combined mr-2 text-[#4B5563]"></i>
+                <div class="p-6 sm:p-7 bg-zinc-50 border border-zinc-200/80 rounded-2xl space-y-2.5">
+                    <div class="font-bold text-sm text-zinc-950 uppercase flex items-center font-display">
+                        <i class="fa-solid fa-ruler-combined mr-2.5 text-zinc-600"></i>
                         Footprint Needed
                     </div>
-                    <p class="text-[#4B5563] leading-relaxed">
+                    <p class="text-zinc-600 leading-relaxed">
                         Minimum 35' length × 18' width clear footprint. Level concrete, asphalt, hard-packed gravel, or firm turf ground required.
                     </p>
                 </div>
 
-                <div class="p-6 bg-[#F9FAFB] border border-[#E5E7EB] rounded space-y-2">
-                    <div class="font-bold text-sm text-[#000000] uppercase flex items-center">
-                        <i class="fa-solid fa-clock mr-2 text-[#4B5563]"></i>
+                <div class="p-6 sm:p-7 bg-zinc-50 border border-zinc-200/80 rounded-2xl space-y-2.5">
+                    <div class="font-bold text-sm text-zinc-950 uppercase flex items-center font-display">
+                        <i class="fa-solid fa-clock mr-2.5 text-zinc-600"></i>
                         Setup & Teardown
                     </div>
-                    <p class="text-[#4B5563] leading-relaxed">
+                    <p class="text-zinc-600 leading-relaxed">
                         Arrives 2 hours prior to doors. Stage deployment, rail assembly, and leveling completed in 20–30 minutes by our delivery specialist.
                     </p>
                 </div>
 
-                <div class="p-6 bg-[#F9FAFB] border border-[#E5E7EB] rounded space-y-2">
-                    <div class="font-bold text-sm text-[#000000] uppercase flex items-center">
-                        <i class="fa-solid fa-plug mr-2 text-[#4B5563]"></i>
+                <div class="p-6 sm:p-7 bg-zinc-50 border border-zinc-200/80 rounded-2xl space-y-2.5">
+                    <div class="font-bold text-sm text-zinc-950 uppercase flex items-center font-display">
+                        <i class="fa-solid fa-plug mr-2.5 text-zinc-600"></i>
                         Shore Power Hookup
                     </div>
-                    <p class="text-[#4B5563] leading-relaxed">
+                    <p class="text-zinc-600 leading-relaxed">
                         50-Amp NEMA 14-50 standard plug or 100A panel hookup. When off-grid, our silent battery or inverter generator powers all loads.
                     </p>
                 </div>
 
-                <div class="p-6 bg-[#F9FAFB] border border-[#E5E7EB] rounded space-y-2">
-                    <div class="font-bold text-sm text-[#000000] uppercase flex items-center">
-                        <i class="fa-solid fa-shield-halved mr-2 text-[#4B5563]"></i>
-                        Structural & Safety Standards
+                <div class="p-6 sm:p-7 bg-zinc-50 border border-zinc-200/80 rounded-2xl space-y-2.5">
+                    <div class="font-bold text-sm text-zinc-950 uppercase flex items-center font-display">
+                        <i class="fa-solid fa-shield-halved mr-2.5 text-zinc-600"></i>
+                        Structural Standards
                     </div>
-                    <p class="text-[#4B5563] leading-relaxed">
+                    <p class="text-zinc-600 leading-relaxed">
                         Commercial-grade structural steel chassis, dual heavy-duty corner stabilizing jacks, safety perimeter handrails, and slip-resistant stage surface.
                     </p>
                 </div>
@@ -724,20 +723,20 @@
     </section>
 
     <!-- SECTION 05: BOTTOM CALL TO ACTION -->
-    <section class="py-20 bg-[#111827] text-white">
+    <section class="py-20 sm:py-24 bg-zinc-950 text-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div class="space-y-2 text-center lg:text-left">
-                <span class="text-xs text-neutral-400 uppercase tracking-widest font-bold">[READY TO BUILD YOUR EVENT RUN?]</span>
-                <h2 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">Lock in Your Stage Production Tier</h2>
-                <p class="text-sm text-neutral-400 max-w-xl">
+                <span class="text-xs text-zinc-400 font-mono uppercase tracking-widest font-bold">[READY TO BUILD YOUR EVENT RUN?]</span>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase tracking-tight">Lock in Your Stage Production Tier</h2>
+                <p class="text-sm text-zinc-400 max-w-xl leading-relaxed">
                     Run the interactive rate calculator or contact our logistics team to hold your 2026 or 2027 festival, corporate, or tour dates.
                 </p>
             </div>
             <div class="flex flex-wrap gap-4 justify-center">
-                <a href="index.html#calculator" class="px-8 py-4 bg-[#FFFFFF] hover:bg-neutral-200 text-[#000000] font-bold text-sm uppercase tracking-widest rounded transition">
+                <a href="index.html#calculator" class="px-7 py-4 bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition">
                     Open Rate Calculator &rarr;
                 </a>
-                <a href="index.html#reserve-section" class="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold text-sm uppercase tracking-widest rounded transition">
+                <a href="index.html#reserve-section" class="px-7 py-4 bg-transparent border border-zinc-700 hover:border-white text-white font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition">
                     Hold Date (No Obligation)
                 </a>
             </div>
@@ -745,20 +744,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#000000] text-white py-12 hairline-t">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-neutral-400">
+    <footer class="bg-black text-white py-14 hairline-t border-zinc-900">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-400">
             <div class="flex items-center space-x-3">
-                <span class="font-bold text-white uppercase tracking-wider">ONYX STAGES FLEET OPERATIONS</span>
+                <span class="font-display font-bold text-white uppercase tracking-wider">ONYX STAGES FLEET OPERATIONS</span>
                 <span>&bull;</span>
                 <a href="mailto:booking@onyxstages.com" class="text-white hover:underline">booking@onyxstages.com</a>
             </div>
-            <div class="flex items-center space-x-6 uppercase tracking-wider">
+            <div class="flex items-center space-x-6 uppercase tracking-wider text-[11px]">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="packages.html" class="hover:text-white transition">Packages & Add-ons</a>
                 <a href="index.html#gallery" class="hover:text-white transition">Rig Gallery</a>
-                <a href="mailto:booking@onyxstages.com" class="hover:text-white transition">Direct Booking: booking@onyxstages.com</a>
+                <a href="mailto:booking@onyxstages.com" class="hover:text-white transition">Direct Booking</a>
             </div>
-            <div>
+            <div class="text-zinc-500 text-[11px]">
                 &copy; 2026-2027 Onyx Stages. All Rights Reserved. &bull; Nashville, TN
             </div>
         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#FBFBFB] text-[#111827] antialiased selection:bg-[#000000] selection:text-[#FFFFFF] scroll-smooth">
+<html lang="en" class="bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-black selection:text-white scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,12 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo/favicon-32x32.png">
     <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -17,18 +23,18 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
-                        sans: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
-                        mono: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         brand: {
-                            black: "#000000",
-                            charcoal: "#111827",
-                            slate: "#374151",
-                            muted: "#4B5563",
-                            border: "#D1D5DB",
-                            surface: "#F9FAFB",
+                            black: "#09090B",
+                            dark: "#18181B",
+                            slate: "#27272A",
+                            muted: "#71717A",
+                            border: "#E4E4E7",
+                            surface: "#F4F4F5",
                             pure: "#FFFFFF"
                         }
                     }
@@ -38,107 +44,109 @@
     </script>
 
     <style>
-        html {
-            font-size: 18px;
-        }
-        @media (min-width: 1024px) {
-            html {
-                font-size: 19px;
-            }
-        }
-
-        * {
-            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
-        }
         body {
-            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
-            background-color: #FBFBFB;
-            color: #111827;
-            line-height: 1.5;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FAFAFA;
+            color: #09090B;
+            line-height: 1.6;
         }
 
-        /* Framer / Swiss Sub-Pixel Grid Texture */
-        .framer-grid {
-            background-size: 32px 32px;
+        h1, h2, h3, .font-display {
+            font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        /* Subtle Architectural Grid Texture */
+        .arch-grid {
+            background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
         }
 
-        .hairline-b { border-bottom: 1px solid #E5E7EB; }
-        .hairline-t { border-top: 1px solid #E5E7EB; }
-        .hairline-r { border-right: 1px solid #E5E7EB; }
-        .hairline-l { border-left: 1px solid #E5E7EB; }
+        .hairline-b { border-bottom: 1px solid #E4E4E7; }
+        .hairline-t { border-top: 1px solid #E4E4E7; }
+        .hairline-r { border-right: 1px solid #E4E4E7; }
+        .hairline-l { border-left: 1px solid #E4E4E7; }
 
-        .img-zoom {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .group:hover .img-zoom {
-            transform: scale(1.03);
-        }
-
-        .framer-card {
+        .luxury-card {
             background: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #E4E4E7;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .framer-card:hover {
-            border-color: #000000;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        .luxury-card:hover {
+            border-color: #18181B;
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06);
             transform: translateY(-2px);
+        }
+
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4F4F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D4D8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A1A1AA;
         }
     </style>
 </head>
-<body class="bg-[#FBFBFB] text-[#111827] overflow-x-hidden framer-grid">
+<body class="bg-[#FAFAFA] text-zinc-900 overflow-x-hidden arch-grid">
 
     <!-- Top Status Ribbon -->
-    <div class="w-full bg-[#FFFFFF] hairline-b text-sm text-[#4B5563] py-2.5 px-4 sm:px-8 flex justify-between items-center z-50 sticky top-0 shadow-sm">
+    <div class="w-full bg-white hairline-b text-xs text-zinc-500 py-2.5 px-4 sm:px-8 flex justify-between items-center z-50 sticky top-0 shadow-sm/50">
         <div class="flex items-center space-x-3 sm:space-x-4">
-            <span class="inline-flex items-center text-[#000000] font-bold tracking-wider uppercase">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#000000] animate-pulse mr-2"></span>
-                OFFICIAL SPRING 2027 FLEET LAUNCH // 8.5' × 24' BLACKOUT STAGE RIG
+            <span class="inline-flex items-center text-zinc-950 font-semibold tracking-wider uppercase text-[11px]">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
+                SPRING 2027 FLEET LAUNCH // 8.5' × 24' BLACKOUT STAGE
             </span>
-            <span class="hidden md:inline text-neutral-300">|</span>
-            <span class="hidden md:inline text-[#4B5563]">14,000# GVWR &bull; 100A COMMERCIAL SERVICE</span>
-            <span class="hidden lg:inline text-neutral-300">|</span>
-            <span class="hidden lg:inline text-[#4B5563]">16' MOTORIZED DECK &bull; 18' AWNING</span>
+            <span class="hidden md:inline text-zinc-300">|</span>
+            <span class="hidden md:inline text-zinc-500 text-[11px]">14,000# GVWR &bull; 100A COMMERCIAL SERVICE</span>
+            <span class="hidden lg:inline text-zinc-300">|</span>
+            <span class="hidden lg:inline text-zinc-500 text-[11px]">16' MOTORIZED DECK &bull; 18' AWNING</span>
         </div>
-        <div class="flex items-center space-x-4 text-sm">
-            <span class="text-[#4B5563] hidden sm:inline">NASHVILLE &bull; REGIONAL SOUTHEAST</span>
-            <span class="bg-[#000000] text-[#FFFFFF] px-3 py-1 rounded text-xs font-bold tracking-widest uppercase">NOW BOOKING 2027</span>
+        <div class="flex items-center space-x-4 text-[11px]">
+            <span class="text-zinc-500 hidden sm:inline">NASHVILLE &bull; REGIONAL SOUTHEAST</span>
+            <span class="bg-zinc-950 text-white px-2.5 py-1 rounded-full font-bold tracking-widest uppercase text-[10px]">NOW BOOKING 2027</span>
         </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="bg-[#FFFFFF]/95 backdrop-blur-md hairline-b z-40 relative">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-24 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-3.5 group">
-                <div class="w-12 h-12 bg-[#000000] border border-neutral-800 rounded overflow-hidden shadow-sm transition-transform group-hover:scale-95 flex items-center justify-center">
+    <header class="bg-white/90 backdrop-blur-md hairline-b z-40 relative">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-20 sm:h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3.5 group">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden shadow-sm transition-transform group-hover:scale-95 flex items-center justify-center shrink-0">
                     <img src="assets/logo/onyx_stages_emblem.png" alt="Onyx Stages Crest" class="w-full h-full object-contain">
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-extrabold text-3xl tracking-tight text-[#000000] uppercase">ONYX <span class="text-[#6B7280]">STAGES</span></span>
-                    <span class="text-xs text-[#6B7280] tracking-widest uppercase">OnyxStages.com &bull; Mobile Stage Architecture</span>
+                    <span class="font-display font-bold text-2xl sm:text-3xl tracking-tight text-zinc-950 uppercase leading-none">ONYX <span class="text-zinc-400">STAGES</span></span>
+                    <span class="text-[10px] sm:text-xs text-zinc-400 tracking-widest uppercase font-medium mt-1">Mobile Stage Architecture</span>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-sm uppercase tracking-widest text-[#374151] font-bold">
-                <a href="#comps" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">01.</span><span>Cost Comps</span>
+            <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest text-zinc-600 font-semibold">
+                <a href="#comps" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">01.</span><span>Cost Comps</span>
                 </a>
-                <a href="packages.html" class="text-[#000000] hover:text-[#4B5563] transition flex items-center space-x-1.5 underline decoration-2 underline-offset-4">
-                    <span class="text-[#000000] font-black">02.</span><span>Packages & Specs</span>
+                <a href="packages.html" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">02.</span><span>Packages & Specs</span>
                 </a>
-                <a href="#calculator" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">03.</span><span>Rental Rates</span>
+                <a href="#calculator" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">03.</span><span>Rental Rates</span>
                 </a>
-                <a href="#reserve-section" class="hover:text-[#000000] transition flex items-center space-x-1.5">
-                    <span class="text-[#000000] font-black">04.</span><span>Reserve</span>
+                <a href="#reserve-section" class="hover:text-zinc-950 transition flex items-center space-x-1.5 py-1">
+                    <span class="text-zinc-400 font-mono text-[11px]">04.</span><span>Reserve</span>
                 </a>
             </nav>
 
-            <div class="flex items-center space-x-4">
-                <a href="#calculator" class="px-6 py-3 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest transition shadow-sm">
+            <div class="flex items-center space-x-3">
+                <a href="#calculator" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl text-xs uppercase tracking-wider transition shadow-sm">
                     Instant Quote
                 </a>
             </div>
@@ -146,109 +154,110 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-16 pb-24 sm:pt-24 sm:pb-28 hairline-b bg-[#FFFFFF]">
+    <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 hairline-b bg-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-[#6B7280] pb-6 hairline-b mb-12">
+            <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 pb-5 hairline-b mb-10 sm:mb-14">
                 <div class="flex items-center space-x-2">
-                    <span class="text-[#000000] font-bold">[00 // FLEET ASSET DOSSIER]</span>
-                    <span>2026 SLE 8.5' × 24' BLACKOUT STAGE TRAILER</span>
+                    <span class="text-zinc-950 font-bold font-mono">[00 // FLEET ASSET DOSSIER]</span>
+                    <span class="text-zinc-500">2026 SLE 8.5' × 24' BLACKOUT STAGE TRAILER</span>
                 </div>
-                <div class="text-[#000000] font-bold uppercase tracking-wider">
+                <div class="text-zinc-900 font-semibold uppercase tracking-wider text-[11px]">
                     16' MOTORIZED DECK &bull; 18' ARMLESS AWNING &bull; 100A COMMERCIAL SERVICE
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center">
                 <!-- Left Column: Typography & Proposition -->
-                <div class="lg:col-span-6 space-y-7">
-                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded text-[#000000] text-sm font-bold uppercase tracking-wider">
+                <div class="lg:col-span-6 space-y-6 sm:space-y-8">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 bg-zinc-100 border border-zinc-200/80 rounded-full text-zinc-900 text-xs font-semibold tracking-wide">
+                        <span class="w-1.5 h-1.5 rounded-full bg-zinc-950"></span>
                         <span>Commercial Fleet Rig</span>
-                        <span>&bull;</span>
-                        <span>20-Minute Solo Winch Setup</span>
+                        <span class="text-zinc-300">&bull;</span>
+                        <span>20-Minute Solo Setup</span>
                     </div>
 
-                    <h1 class="font-black text-5xl sm:text-6xl lg:text-[76px] uppercase tracking-tight leading-[0.96] text-[#000000]">
-                        THE TURNKEY<br>
-                        BLACKOUT STAGE<br>
-                        FOR YOUR EVENT.
+                    <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.04] text-zinc-950">
+                        The Turnkey<br>
+                        Blackout Stage<br>
+                        For Your Event.
                     </h1>
 
-                    <p class="text-lg sm:text-xl text-[#374151] leading-relaxed max-w-xl">
-                        A clean, architectural black-on-black mobile stage designed for concerts, festivals, 5Ks, and corporate brand tours. Featuring a 16-foot motorized fold-down performance deck, an 18-foot armless lateral power awning, finished insulated interior cabin, Behringer concert audio, 75" 4K digital screen, and 0 dB silent lithium battery power.
+                    <p class="text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl font-normal">
+                        A clean, architectural black-on-black mobile stage engineered for live concerts, festivals, community 5Ks, and corporate brand activations. Featuring a 16-foot motorized fold-down deck, 18-foot armless lateral power awning, finished insulated cabin, Behringer concert audio, 75" 4K digital screen, and 0 dB silent lithium battery power.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-3.5 pt-2 text-sm">
-                        <a href="#calculator" class="px-8 py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded uppercase tracking-wider flex items-center justify-center transition shadow-sm">
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2 text-xs sm:text-sm">
+                        <a href="#calculator" class="px-7 py-4 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl uppercase tracking-wider flex items-center justify-center transition shadow-sm">
                             <span>Calculate Rental Quote</span>
-                            <i class="fa-solid fa-arrow-right ml-3 text-sm"></i>
+                            <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
                         </a>
-                        <a href="#comps" class="px-8 py-4 bg-[#F9FAFB] hover:bg-[#E5E7EB] text-[#000000] border border-[#9CA3AF] rounded font-bold uppercase tracking-wider flex items-center justify-center transition">
+                        <a href="#comps" class="px-7 py-4 bg-zinc-50 hover:bg-zinc-100 text-zinc-900 border border-zinc-200 rounded-xl font-semibold uppercase tracking-wider flex items-center justify-center transition">
                             <span>View Market Cost Comps</span>
                         </a>
                     </div>
 
                     <!-- Metric Strip -->
-                    <div class="grid grid-cols-3 gap-4 pt-4 text-sm">
-                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
-                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">STAGE DECK</div>
-                            <div class="text-2xl text-[#000000] font-black mt-1">16 FT FOLD-OUT</div>
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4">
+                        <div class="bg-zinc-50/80 p-4 sm:p-5 rounded-2xl border border-zinc-200/70">
+                            <div class="text-zinc-400 text-[11px] font-mono uppercase tracking-wider">STAGE DECK</div>
+                            <div class="font-display font-bold text-lg sm:text-2xl text-zinc-950 mt-1">16 FT FOLD-OUT</div>
                         </div>
-                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
-                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">POWER AWNING</div>
-                            <div class="text-2xl text-[#000000] font-black mt-1">18 FT ARMLESS</div>
+                        <div class="bg-zinc-50/80 p-4 sm:p-5 rounded-2xl border border-zinc-200/70">
+                            <div class="text-zinc-400 text-[11px] font-mono uppercase tracking-wider">POWER AWNING</div>
+                            <div class="font-display font-bold text-lg sm:text-2xl text-zinc-950 mt-1">18 FT ARMLESS</div>
                         </div>
-                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
-                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">DEPLOYMENT</div>
-                            <div class="text-2xl text-[#000000] font-black mt-1">20 MIN WINCH</div>
+                        <div class="bg-zinc-50/80 p-4 sm:p-5 rounded-2xl border border-zinc-200/70">
+                            <div class="text-zinc-400 text-[11px] font-mono uppercase tracking-wider">DEPLOYMENT</div>
+                            <div class="font-display font-bold text-lg sm:text-2xl text-zinc-950 mt-1">20 MIN WINCH</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column: Hero Production Image with Auto-Scroll & Clean View -->
-                <div class="lg:col-span-6 relative" id="gallery" onmouseenter="pauseHeroAutoplay()" onmouseleave="resumeHeroAutoplay()">
-                    <div class="relative bg-white p-3.5 rounded-lg border border-[#D1D5DB] shadow-md cursor-pointer group" onclick="openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc)">
+                <div class="lg:col-span-6 relative" id="gallery">
+                    <div class="relative bg-white p-3 rounded-2xl border border-zinc-200/90 shadow-sm cursor-pointer group hover:shadow-md transition-all duration-300" onclick="openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc)">
                         
                         <!-- Image Container (100% Unobstructed View) -->
-                        <div class="relative aspect-[16/10] overflow-hidden rounded bg-neutral-900 border border-[#E5E7EB]">
-                            <img id="hero-main-img" src="assets/onyx_stage_broadside_empty_studio.jpg" alt="ONYX 24ft Mobile Blackout Stage Rig Deployed in Automotive Studio" class="w-full h-full object-cover transition-opacity duration-200">
+                        <div class="relative aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950 border border-zinc-100">
+                            <img id="hero-main-img" src="assets/onyx_stage_broadside_empty_studio.jpg" alt="ONYX 24ft Mobile Blackout Stage Rig Deployed in Studio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]">
                             
                             <!-- Badges -->
-                            <div class="absolute top-3.5 left-3.5 text-[11px] sm:text-xs bg-black/85 backdrop-blur-md border border-white/20 px-3 py-1 text-white font-bold rounded shadow-sm uppercase tracking-wider z-20" id="hero-badge-tag">
+                            <div class="absolute top-3.5 left-3.5 text-[11px] bg-zinc-950/80 backdrop-blur-md border border-white/10 px-3 py-1 text-white font-medium rounded-full shadow-sm uppercase tracking-wider z-20">
                                 FLEET ASSET // STUDIO OVERVIEW
                             </div>
                             
                             <!-- Sleek Floating Enlarge Pill Button -->
-                            <button type="button" onclick="event.stopPropagation(); openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc);" class="absolute top-3.5 right-3.5 text-xs bg-black/85 hover:bg-black text-white font-bold px-3.5 py-1.5 uppercase rounded-full shadow-md tracking-wider flex items-center space-x-1.5 transition-all z-20 backdrop-blur-md border border-white/20 hover:scale-105" title="Click to view full-screen lightbox">
-                                <i class="fa-solid fa-expand text-xs"></i>
+                            <button type="button" onclick="event.stopPropagation(); openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc);" class="absolute top-3.5 right-3.5 text-[11px] bg-zinc-950/80 hover:bg-zinc-950 text-white font-semibold px-3.5 py-1.5 uppercase rounded-full shadow-md tracking-wider flex items-center space-x-1.5 transition-all z-20 backdrop-blur-md border border-white/10 hover:scale-105" title="Click to view full-screen lightbox">
+                                <i class="fa-solid fa-expand text-[10px]"></i>
                                 <span>ENLARGE FULL RES</span>
                             </button>
                         </div>
 
                         <!-- Clean Caption Area Below the Image (ZERO obstruction on the image) -->
-                        <div class="pt-3.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                        <div class="pt-4 pb-1 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                             <div>
-                                <div id="hero-caption-title" class="text-sm sm:text-base font-black text-[#000000] uppercase tracking-wide">
+                                <div id="hero-caption-title" class="text-sm sm:text-base font-display font-bold text-zinc-950 uppercase tracking-tight">
                                     24' Blackout Mobile Stage Rig Studio Overview
                                 </div>
-                                <div id="hero-caption-sub" class="text-xs text-[#6B7280] font-medium">
-                                    16' Motorized Stage Deck • 8' Rear Ramp Stage • 18' Overhead Power Canopy • 75" 4K Display
+                                <div id="hero-caption-sub" class="text-xs text-zinc-500 font-normal mt-0.5">
+                                    16' Motorized Stage Deck &bull; 8' Rear Ramp Stage &bull; 18' Overhead Power Canopy &bull; 75" 4K Display
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-2 text-xs text-[#6B7280] self-end sm:self-center shrink-0">
-                                <span class="bg-black text-white px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider">OFFICIAL SPEC</span>
+                            <div class="flex items-center space-x-2 text-xs text-zinc-500 self-end sm:self-center shrink-0">
+                                <span class="bg-zinc-950 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">OFFICIAL SPEC</span>
                             </div>
                         </div>
 
                     </div>
 
                     <!-- Studio Fleet Status Banner -->
-                    <div class="mt-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded px-4 py-2.5 flex items-center justify-between text-xs text-[#4B5563]">
+                    <div class="mt-3.5 bg-zinc-50 border border-zinc-200/80 rounded-xl px-4 py-3 flex items-center justify-between text-xs text-zinc-600">
                         <span class="flex items-center space-x-2">
-                            <span class="w-2 h-2 rounded-full bg-black"></span>
-                            <span class="font-bold text-black uppercase tracking-wider">Fleet Asset Master Rig</span>
+                            <span class="w-2 h-2 rounded-full bg-zinc-950"></span>
+                            <span class="font-semibold text-zinc-950 uppercase tracking-wider text-[11px]">Fleet Asset Master Rig</span>
                         </span>
-                        <span class="uppercase tracking-wider text-[11px] font-medium text-[#6B7280]">8.5' &times; 24' Blackout Stage Architecture</span>
+                        <span class="uppercase tracking-wider text-[11px] font-medium text-zinc-400">8.5' &times; 24' Blackout Architecture</span>
                     </div>
                 </div>
             </div>
@@ -257,99 +266,105 @@
     </section>
 
     <!-- SECTION 01: ITEMIZED MARKET COMPS MATRIX -->
-    <section id="comps" class="py-24 hairline-b bg-[#F9FAFB]">
+    <section id="comps" class="py-20 sm:py-28 hairline-b bg-zinc-50/50">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[01 // MARKET PRICE DISRUPTION]</span>
-                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Line-By-Line Organizer Cost Comparison</h2>
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[01 // MARKET PRICE DISRUPTION]</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-zinc-950 uppercase mt-2">Line-By-Line Organizer Cost Comparison</h2>
                 </div>
-                <div class="text-sm text-[#4B5563] max-w-md">
-                    Actual market rental comps showing why event organizers save $1,000–$6,000 per booking with our turnkey stage rig.
+                <div class="text-sm text-zinc-600 max-w-md leading-relaxed">
+                    Actual Middle Tennessee market rental comps showing why event organizers save $1,000–$6,000 per booking with our turnkey stage rig.
                 </div>
             </div>
 
             <!-- Comps Table -->
-            <div class="overflow-x-auto border border-[#9CA3AF] rounded">
+            <div class="overflow-x-auto border border-zinc-200/90 rounded-2xl bg-white shadow-sm">
                 <table class="w-full text-sm text-left border-collapse">
                     <thead>
-                        <tr class="bg-[#111827] text-white uppercase text-xs tracking-wider">
-                            <th class="p-4 border-r border-neutral-700 w-1/4">Expense Line Item</th>
-                            <th class="p-4 border-r border-neutral-700 w-1/4">Option 1: Heavy Hydraulic Stage<br><span class="text-xs text-neutral-400 font-normal normal-case">(Stageline SL100 / Large AV House)</span></th>
-                            <th class="p-4 border-r border-neutral-700 w-1/4">Option 2: Pieced-Together Rental<br><span class="text-xs text-neutral-400 font-normal normal-case">(Party Rental Decks + Multi-Vendor AV)</span></th>
-                            <th class="p-4 bg-[#000000] text-white border-l border-neutral-700 w-1/4">Option 3: ONYX Turnkey Stage<br><span class="text-xs text-neutral-300 font-normal normal-case">(24' Mobile Dual-Stage Rig)</span></th>
+                        <tr class="bg-zinc-950 text-white uppercase text-xs tracking-wider">
+                            <th class="p-4 sm:p-5 border-r border-zinc-800 w-1/4 font-semibold">Expense Line Item</th>
+                            <th class="p-4 sm:p-5 border-r border-zinc-800 w-1/4 font-semibold">Option 1: Heavy Hydraulic Stage<br><span class="text-[11px] text-zinc-400 font-normal normal-case">(Stageline SL100 / Large AV House)</span></th>
+                            <th class="p-4 sm:p-5 border-r border-zinc-800 w-1/4 font-semibold">Option 2: Pieced-Together Rental<br><span class="text-[11px] text-zinc-400 font-normal normal-case">(Party Rental Decks + Multi-Vendor AV)</span></th>
+                            <th class="p-4 sm:p-5 bg-zinc-900 text-white border-l border-zinc-800 w-1/4 font-semibold">Option 3: ONYX Turnkey Stage<br><span class="text-[11px] text-zinc-300 font-normal normal-case">(24' Mobile Dual-Stage Rig)</span></th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-[#D1D5DB] text-[#374151]">
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Stage Platform & Frame</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$3,500 – $4,200</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$850 – $1,100 <span class="text-xs text-[#6B7280]">(10x 4x8 plywood decks)</span></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(16' Fold-Down Deck)</span></td>
+                    <tbody class="divide-y divide-zinc-200/80 text-zinc-700">
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Stage Platform & Frame</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$3,500 – $4,200</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$850 – $1,100 <span class="text-xs text-zinc-400">(10x 4x8 plywood decks)</span></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(16' Fold-Down Deck)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Canopy / Weather Cover</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Included in heavy roof</em></td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$750 – $1,200 <span class="text-xs text-[#6B7280]">(20x20 frame tent)</span></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(18' Armless Awning)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Canopy / Weather Cover</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600"><em>Included in heavy roof</em></td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$750 – $1,200 <span class="text-xs text-zinc-400">(20x20 frame tent)</span></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(18' Armless Awning)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Safety Guardrails & Stairs</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$250 – $400</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$250 – $350</td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Black Rails + Dual Stairs)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Safety Guardrails & Stairs</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$250 – $400</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$250 – $350</td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(Black Rails + Dual Stairs)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Concert Audio System (PA)</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$2,000 – $3,500</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$800 – $1,400 <span class="text-xs text-[#6B7280]">(Rented sound kit)</span></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Behringer Tops + 18" Sub + Dual Monitors)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Concert Audio System (PA)</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$2,000 – $3,500</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$800 – $1,400 <span class="text-xs text-zinc-400">(Rented sound kit)</span></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(Behringer Tops + 18" Sub + Dual Monitors)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Digital Video / TV Display</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$1,500 – $2,500 <span class="text-xs text-[#6B7280]">(LED trailer)</span></td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Not Available on bare stage</em></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(75" 4K Smart Display)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Digital Video / TV Display</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$1,500 – $2,500 <span class="text-xs text-zinc-400">(LED trailer)</span></td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-400"><em>Not Available on bare stage</em></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(75" 4K Smart Display)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Power Generation (Battery / Gen)</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$600 – $900</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$350 – $500 <span class="text-xs text-[#6B7280]">(Sunbelt/Home Depot)</span></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(0 dB Silent LiFePO4 Battery Station)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Power Generation (Battery / Gen)</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$600 – $900</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$350 – $500 <span class="text-xs text-zinc-400">(Sunbelt/Home Depot)</span></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(0 dB Silent LiFePO4 Battery Station)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Backstage Gear & Tech Cabin</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$1,200 – $1,800 <span class="text-xs text-[#6B7280]">(Side tent / pod)</span></td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Not Available (Sit in vehicles)</em></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Insulated Enclosed Cabin)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Backstage Gear & Tech Cabin</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$1,200 – $1,800 <span class="text-xs text-zinc-400">(Side tent / pod)</span></td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-400"><em>Not Available (Sit in vehicles)</em></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(Insulated Enclosed Cabin)</span></td>
                         </tr>
-                        <tr class="hover:bg-[#F9FAFB]">
-                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Delivery, Rigging & Labor</td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$800 – $1,500 <span class="text-xs text-[#6B7280]">(3-4 CDL crew)</span></td>
-                            <td class="p-3.5 border-r border-[#D1D5DB]">$600 – $900 <span class="text-xs text-[#6B7280]">(4-man crew / 4 hrs)</span></td>
-                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(1-Tech 20-Min Setup)</span></td>
+                        <tr class="hover:bg-zinc-50/50 transition">
+                            <td class="p-4 font-semibold text-zinc-950 border-r border-zinc-200/80">Delivery, Rigging & Labor</td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$800 – $1,500 <span class="text-xs text-zinc-400">(3-4 CDL crew)</span></td>
+                            <td class="p-4 border-r border-zinc-200/80 text-zinc-600">$600 – $900 <span class="text-xs text-zinc-400">(4-man crew / 4 hrs)</span></td>
+                            <td class="p-4 bg-zinc-50 font-bold text-zinc-950">INCLUDED <span class="font-normal text-xs text-zinc-500">(1-Tech 20-Min Setup)</span></td>
                         </tr>
-                        <tr class="bg-[#111827] text-white font-bold border-t-2 border-[#000000]">
-                            <td class="p-4 text-base uppercase tracking-wider">TOTAL ORGANIZER COST</td>
-                            <td class="p-4 text-base">$8,700 – $12,600</td>
-                            <td class="p-4 text-base">$3,600 – $5,100</td>
-                            <td class="p-4 text-base bg-[#000000] text-white">$2,750 / DAY</td>
+                        <tr class="bg-zinc-950 text-white font-bold border-t-2 border-zinc-950">
+                            <td class="p-4 sm:p-5 text-sm sm:text-base uppercase tracking-wider font-display">TOTAL ORGANIZER COST</td>
+                            <td class="p-4 sm:p-5 text-sm sm:text-base font-semibold">$8,700 – $12,600</td>
+                            <td class="p-4 sm:p-5 text-sm sm:text-base font-semibold">$3,600 – $5,100</td>
+                            <td class="p-4 sm:p-5 text-base sm:text-lg bg-zinc-900 text-white font-display font-bold">$2,750 / DAY</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="bg-[#F9FAFB] border border-[#E5E7EB] p-6 rounded">
-                    <div class="text-sm font-bold text-[#000000] uppercase tracking-wider mb-2">WHY CLIENTS CHOOSE US OVER HEAVY HYDRAULIC RIGS</div>
-                    <p class="text-sm text-[#4B5563] leading-relaxed">
+                <div class="bg-white border border-zinc-200/90 p-7 rounded-2xl shadow-sm/50">
+                    <div class="text-xs font-bold text-zinc-950 uppercase tracking-wider mb-2 font-mono flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-zinc-950 mr-2"></span>
+                        WHY CLIENTS CHOOSE US OVER HEAVY HYDRAULIC RIGS
+                    </div>
+                    <p class="text-sm text-zinc-600 leading-relaxed">
                         Festivals, 5Ks, and brewery events save <strong>$6,000+ per date</strong>. Our compact 24' footprint sets up in downtown alleys, parks, and city plazas where semi-truck crane stages physically cannot fit.
                     </p>
                 </div>
-                <div class="bg-[#F9FAFB] border border-[#E5E7EB] p-6 rounded">
-                    <div class="text-sm font-bold text-[#000000] uppercase tracking-wider mb-2">WHY CLIENTS CHOOSE US OVER PIECED-TOGETHER RENTALS</div>
-                    <p class="text-sm text-[#4B5563] leading-relaxed">
+                <div class="bg-white border border-zinc-200/90 p-7 rounded-2xl shadow-sm/50">
+                    <div class="text-xs font-bold text-zinc-950 uppercase tracking-wider mb-2 font-mono flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-zinc-950 mr-2"></span>
+                        WHY CLIENTS CHOOSE US OVER PIECED-TOGETHER RENTALS
+                    </div>
+                    <p class="text-sm text-zinc-600 leading-relaxed">
                         Organizers avoid coordinating with 3 different rental vendors. They receive an all-in-one delivery with a 75" 4K video display, Behringer sound, stage monitors, and an insulated enclosed stage rig for <strong>$1,000 less</strong>.
                     </p>
                 </div>
@@ -359,47 +374,47 @@
     </section>
 
     <!-- SECTION 04: LIVE RENTAL RATE ENGINE -->
-    <section id="calculator" class="py-24 hairline-b bg-[#F9FAFB]">
+    <section id="calculator" class="py-20 sm:py-28 hairline-b bg-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
                 <div>
-                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[04 // RENTAL RATE ENGINE]</span>
-                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Instant Production Rate Calculator</h2>
+                    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[04 // RENTAL RATE ENGINE]</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-zinc-950 uppercase mt-2">Instant Production Rate Calculator</h2>
                 </div>
-                <div class="text-sm text-[#4B5563] max-w-md">
+                <div class="text-sm text-zinc-600 max-w-md leading-relaxed">
                     Select your production tier, schedule, and optional add-ons below for an immediate estimate.
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 items-start">
                 <!-- Controls -->
-                <div class="lg:col-span-7 space-y-7">
+                <div class="lg:col-span-7 space-y-8">
                     
                     <!-- 1. Package Tier Selection -->
-                    <div class="space-y-3.5">
-                        <label class="text-sm uppercase text-[#374151] font-bold flex justify-between">
+                    <div class="space-y-4">
+                        <label class="text-xs uppercase text-zinc-500 font-bold tracking-wider flex justify-between">
                             <span>1. Select Rig Configuration</span>
-                            <span class="text-[#000000]">[REQUIRED]</span>
+                            <span class="text-zinc-950 font-mono">[REQUIRED]</span>
                         </label>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                            <button type="button" onclick="selectTier('dry', 1450)" id="tier-dry" class="tier-btn p-5 bg-[#FFFFFF] border border-[#D1D5DB] rounded text-left hover:border-[#000000] transition">
-                                <div class="font-bold text-lg text-[#000000] uppercase">DRY STAGE</div>
-                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Stage Trailer + 18' Awning only. Client provides AV.</div>
-                                <div class="text-[#000000] text-lg font-bold mt-4">$1,450 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            <button type="button" onclick="selectTier('dry', 1450)" id="tier-dry" class="tier-btn p-5 bg-white border border-zinc-200 rounded-2xl text-left hover:border-zinc-950 transition-all text-zinc-900">
+                                <div class="font-display font-bold text-lg text-zinc-950 uppercase">DRY STAGE</div>
+                                <div class="text-xs text-zinc-500 mt-1.5 leading-relaxed">Stage Trailer + 18' Awning only. Client provides AV.</div>
+                                <div class="text-zinc-950 font-display font-bold text-lg mt-4">$1,450 <span class="text-xs text-zinc-400 font-normal">/DAY</span></div>
                             </button>
 
-                            <button type="button" onclick="selectTier('turnkey', 2750)" id="tier-turnkey" class="tier-btn p-5 bg-[#FFFFFF] border-2 border-[#000000] rounded text-left transition relative">
-                                <span class="absolute top-2 right-2 bg-[#000000] text-white text-[10px] font-bold px-2 py-0.5 uppercase rounded tracking-wider">POPULAR</span>
-                                <div class="font-bold text-lg text-[#000000] uppercase">TURNKEY LIVE</div>
-                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Stage + Behringer Sound, Dual Monitors, 75" TV, Lights & Silent Battery Power.</div>
-                                <div class="text-[#000000] text-lg font-bold mt-4">$2,750 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            <button type="button" onclick="selectTier('turnkey', 2750)" id="tier-turnkey" class="tier-btn p-5 bg-white border-2 border-zinc-950 rounded-2xl text-left transition-all relative text-zinc-900 shadow-sm">
+                                <span class="absolute top-2.5 right-2.5 bg-zinc-950 text-white text-[9px] font-bold px-2 py-0.5 uppercase rounded-full tracking-wider">POPULAR</span>
+                                <div class="font-display font-bold text-lg text-zinc-950 uppercase">TURNKEY LIVE</div>
+                                <div class="text-xs text-zinc-500 mt-1.5 leading-relaxed">Stage + Behringer Sound, Dual Monitors, 75" TV, Lights & Battery Power.</div>
+                                <div class="text-zinc-950 font-display font-bold text-lg mt-4">$2,750 <span class="text-xs text-zinc-400 font-normal">/DAY</span></div>
                             </button>
 
-                            <button type="button" onclick="selectTier('brand', 4500)" id="tier-brand" class="tier-btn p-5 bg-[#FFFFFF] border border-[#D1D5DB] rounded text-left hover:border-[#000000] transition">
-                                <div class="font-bold text-lg text-[#000000] uppercase">BRAND VIP</div>
-                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Turnkey stage, 75" 4K screen, wrap-ready exterior, sound & on-site tech.</div>
-                                <div class="text-[#000000] text-lg font-bold mt-4">$4,500 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            <button type="button" onclick="selectTier('brand', 4500)" id="tier-brand" class="tier-btn p-5 bg-white border border-zinc-200 rounded-2xl text-left hover:border-zinc-950 transition-all text-zinc-900">
+                                <div class="font-display font-bold text-lg text-zinc-950 uppercase">BRAND VIP</div>
+                                <div class="text-xs text-zinc-500 mt-1.5 leading-relaxed">Turnkey stage, 75" 4K screen, wrap-ready exterior, sound & on-site tech.</div>
+                                <div class="text-zinc-950 font-display font-bold text-lg mt-4">$4,500 <span class="text-xs text-zinc-400 font-normal">/DAY</span></div>
                             </button>
                         </div>
                     </div>
@@ -407,8 +422,8 @@
                     <!-- 2. Event Duration & Season Selection -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label class="text-sm uppercase text-[#374151] font-bold">2. Event Schedule</label>
-                            <select id="calc-duration" onchange="calculateLiveTotal()" class="w-full bg-[#FFFFFF] border border-[#D1D5DB] rounded px-4 py-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                            <label class="text-xs uppercase text-zinc-500 font-bold tracking-wider">2. Event Schedule</label>
+                            <select id="calc-duration" onchange="calculateLiveTotal()" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 focus:outline-none transition">
                                 <option value="1">1 Day (8 Hours On-Site)</option>
                                 <option value="2">2-Day Weekend (15% Multi-Day Discount)</option>
                                 <option value="3">3-Day Festival Run (25% Multi-Day Discount)</option>
@@ -418,8 +433,8 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm uppercase text-[#374151] font-bold">3. Booking Calendar</label>
-                            <select id="calc-season" onchange="calculateLiveTotal()" class="w-full bg-[#FFFFFF] border border-[#D1D5DB] rounded px-4 py-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                            <label class="text-xs uppercase text-zinc-500 font-bold tracking-wider">3. Booking Calendar</label>
+                            <select id="calc-season" onchange="calculateLiveTotal()" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 focus:outline-none transition">
                                 <option value="2026">2026 Event Calendar (Standard Rate)</option>
                                 <option value="2027">2027 Advance Booking (10% Early Bird Discount)</option>
                             </select>
@@ -427,18 +442,18 @@
                     </div>
 
                     <!-- 3. Production Add-Ons (Dynamic by Tier) -->
-                    <div class="space-y-3.5">
+                    <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <label class="text-sm uppercase text-[#374151] font-bold">4. Tailored Production Add-Ons</label>
-                            <span class="text-xs text-[#6B7280] font-normal" id="addons-tier-hint">Showing options for Turnkey Live</span>
+                            <label class="text-xs uppercase text-zinc-500 font-bold tracking-wider">4. Tailored Production Add-Ons</label>
+                            <span class="text-xs text-zinc-400 font-normal" id="addons-tier-hint">Showing options for Turnkey Live</span>
                         </div>
-                        <div id="dynamic-addons-container" class="space-y-2.5">
+                        <div id="dynamic-addons-container" class="space-y-3">
                             <!-- Injected dynamically by renderAddons() -->
                         </div>
 
                         <div class="pt-2">
-                            <a href="packages.html" class="inline-flex items-center text-xs font-bold text-[#000000] uppercase tracking-wider hover:text-[#4B5563] underline decoration-1 underline-offset-4">
-                                <i class="fa-solid fa-table-list mr-2 text-[#000000]"></i>
+                            <a href="packages.html" class="inline-flex items-center text-xs font-semibold text-zinc-950 uppercase tracking-wider hover:text-zinc-600 underline decoration-1 underline-offset-4">
+                                <i class="fa-solid fa-table-list mr-2 text-zinc-950"></i>
                                 View Full Itemized Equipment & Package Comparison Matrix (40+ Line Specs) &rarr;
                             </a>
                         </div>
@@ -447,35 +462,35 @@
                 </div>
 
                 <!-- Live Ledger Card -->
-                <div class="lg:col-span-5 bg-white border border-[#9CA3AF] rounded p-8 sticky top-28 space-y-6 shadow-md">
+                <div class="lg:col-span-5 bg-white border border-zinc-200/90 rounded-2xl p-7 sm:p-8 sticky top-28 space-y-6 shadow-sm">
                     <div class="flex justify-between items-center hairline-b pb-4">
-                        <span class="text-xs text-[#4B5563] uppercase tracking-widest font-bold">ESTIMATED RATE LEDGER</span>
-                        <span class="text-xs bg-[#111827] text-white px-3 py-1 rounded font-bold uppercase tracking-wider">LIVE TOTAL</span>
+                        <span class="text-xs text-zinc-400 uppercase tracking-widest font-mono font-bold">ESTIMATED RATE LEDGER</span>
+                        <span class="text-[10px] bg-zinc-950 text-white px-3 py-1 rounded-full font-bold uppercase tracking-wider">LIVE TOTAL</span>
                     </div>
 
                     <div class="space-y-1.5">
-                        <div class="text-[#6B7280] text-xs uppercase tracking-wider">TOTAL ESTIMATED RATE:</div>
-                        <div class="font-black text-6xl text-[#000000] tracking-tight" id="display-total-price">
+                        <div class="text-zinc-400 text-xs uppercase tracking-wider font-mono">TOTAL ESTIMATED RATE:</div>
+                        <div class="font-display font-bold text-5xl sm:text-6xl text-zinc-950 tracking-tight" id="display-total-price">
                             $2,750
                         </div>
-                        <div class="text-sm text-[#6B7280] pt-1">
+                        <div class="text-xs text-zinc-500 pt-1 leading-relaxed">
                             Includes regional delivery (first 30 miles), setup, leveling, and post-event teardown.
                         </div>
                     </div>
 
-                    <div class="space-y-2.5 pt-5 hairline-t text-sm">
-                        <div class="flex justify-between"><span class="text-[#6B7280]">Configuration:</span><span class="text-[#000000] font-bold" id="summary-tier-label">Turnkey Live Package</span></div>
-                        <div class="flex justify-between"><span class="text-[#6B7280]">Duration:</span><span class="text-[#000000] font-bold" id="summary-duration-label">1 Day (8 Hours)</span></div>
-                        <div class="flex justify-between"><span class="text-[#6B7280]">Calendar Mode:</span><span class="text-[#000000] font-bold" id="summary-season-label">2026 Standard Season</span></div>
-                        <div class="flex justify-between"><span class="text-[#6B7280]">Power Source:</span><span class="text-[#000000] font-bold">50A Quiet Inverter Generator</span></div>
+                    <div class="space-y-2.5 pt-5 hairline-t text-xs sm:text-sm">
+                        <div class="flex justify-between"><span class="text-zinc-400">Configuration:</span><span class="text-zinc-950 font-semibold" id="summary-tier-label">Turnkey Live Package</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Duration:</span><span class="text-zinc-950 font-semibold" id="summary-duration-label">1 Day (8 Hours)</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Calendar Mode:</span><span class="text-zinc-950 font-semibold" id="summary-season-label">2026 Standard Season</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Power Source:</span><span class="text-zinc-950 font-semibold">50A Quiet Inverter Generator</span></div>
                     </div>
 
                     <div class="pt-5 hairline-t">
-                        <a href="#reserve-section" class="w-full py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest flex items-center justify-center transition shadow-sm">
+                        <a href="#reserve-section" class="w-full py-4 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center transition shadow-sm">
                             <span>Hold Date With This Rate</span>
-                            <i class="fa-solid fa-arrow-right ml-2.5 text-sm"></i>
+                            <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
                         </a>
-                        <p class="text-xs text-[#6B7280] text-center mt-3.5">
+                        <p class="text-xs text-zinc-400 text-center mt-3.5">
                             Zero obligation. Dates held for 48 hours pending contract review.
                         </p>
                     </div>
@@ -486,73 +501,74 @@
     </section>
 
     <!-- SECTION 05: RESERVATION INTAKE -->
-    <section id="reserve-section" class="py-24 hairline-b bg-[#F9FAFB]">
+    <section id="reserve-section" class="py-20 sm:py-28 hairline-b bg-zinc-50/50">
         <div class="max-w-3xl mx-auto px-4 sm:px-8">
             
-            <div class="text-center space-y-2.5 mb-12">
-                <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[05 // DATE RESERVATION]</span>
-                <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase">Hold Your Stage Date</h2>
-                <p class="text-sm text-[#4B5563]">
+            <div class="text-center space-y-2.5 mb-10 sm:mb-14">
+                <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase font-bold">[05 // DATE RESERVATION]</span>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-zinc-950 uppercase">Hold Your Stage Date</h2>
+                <p class="text-sm text-zinc-600 max-w-lg mx-auto leading-relaxed">
                     Submit your target date below. Our production director will review availability and dispatch a formal agreement within 2 hours.
                 </p>
             </div>
 
-            <form name="booking-inquiry" method="POST" action="https://formsubmit.co/booking@onyxstages.com" onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
+            <form name="booking-inquiry" method="POST" action="https://formsubmit.co/booking@onyxstages.com" onsubmit="handleReservation(event)" class="bg-white border border-zinc-200/90 rounded-2xl p-6 sm:p-10 space-y-6 shadow-sm">
                 <input type="hidden" name="_subject" value="🌟 New Onyx Stages Booking Reservation Inquiry" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_cc" value="cj@onyxstages.com" />
                 <input type="hidden" name="_autoresponse" value="Thank you for contacting ONYX STAGES. We have received your mobile stage reservation request. Our production and logistics director will review fleet availability for your requested event date and contact you directly within 2 business hours with an itemized proposal and date hold agreement. Direct inquiries: booking@onyxstages.com | OnyxStages.com" />
                 <input type="text" name="_honey" style="display:none" />
+                
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Event / Organization *</label>
-                        <input type="text" name="organization" required placeholder="e.g. City Parks & Rec / Summerfest" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Event / Organization *</label>
+                        <input type="text" name="organization" required placeholder="e.g. City Parks & Rec / Summerfest" class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Contact Name *</label>
-                        <input type="text" name="name" required placeholder="Full Name" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Email *</label>
-                        <input type="email" name="email" required placeholder="producer@domain.com" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Phone Number *</label>
-                        <input type="tel" name="phone" required placeholder="(555) 000-0000" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Contact Name *</label>
+                        <input type="text" name="name" required placeholder="Full Name" class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Target Event Date *</label>
-                        <input type="date" name="date" required class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Email *</label>
+                        <input type="email" name="email" required placeholder="producer@domain.com" class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-[#374151] uppercase font-bold">Event City & State *</label>
-                        <input type="text" name="city" required placeholder="e.g. Nashville, TN" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Phone Number *</label>
+                        <input type="tel" name="phone" required placeholder="(555) 000-0000" class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
                     </div>
                 </div>
 
-                <div class="space-y-1.5">
-                    <label class="text-xs text-[#374151] uppercase font-bold">Audio & Staging Notes</label>
-                    <textarea name="notes" rows="3" placeholder="Expected attendance, band setup, generator needs, custom sponsor branding requirements..." class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none"></textarea>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Target Event Date *</label>
+                        <input type="date" name="date" required class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Event City & State *</label>
+                        <input type="text" name="city" required placeholder="e.g. Nashville, TN" class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition">
+                    </div>
                 </div>
 
-                <button type="submit" class="w-full py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest transition flex items-center justify-center shadow-sm">
+                <div class="space-y-2">
+                    <label class="text-xs text-zinc-600 uppercase font-semibold tracking-wider">Audio & Staging Notes</label>
+                    <textarea name="notes" rows="3" placeholder="Expected attendance, band setup, generator needs, custom sponsor branding requirements..." class="w-full bg-zinc-50/60 border border-zinc-200 rounded-xl p-3.5 text-zinc-900 text-sm focus:border-zinc-950 focus:bg-white focus:outline-none transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-zinc-950 hover:bg-zinc-800 text-white font-semibold rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center shadow-sm">
                     <span>Submit Reservation Request</span>
-                    <i class="fa-solid fa-arrow-right ml-2.5 text-sm"></i>
+                    <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
                 </button>
 
-                <div id="booking-success" class="hidden p-5 bg-[#111827] border border-neutral-700 text-white rounded text-center space-y-2 shadow-lg">
-                    <div class="flex items-center justify-center space-x-2 text-emerald-400 font-bold text-sm uppercase tracking-wider">
+                <div id="booking-success" class="hidden p-6 bg-zinc-900 text-white rounded-2xl text-center space-y-2 shadow-lg border border-zinc-800">
+                    <div class="flex items-center justify-center space-x-2 text-emerald-400 font-semibold text-sm uppercase tracking-wider">
                         <i class="fa-solid fa-circle-check text-base"></i>
                         <span>Reservation Intake Received</span>
                     </div>
-                    <p class="text-xs text-neutral-300 max-w-md mx-auto leading-relaxed">
+                    <p class="text-xs text-zinc-300 max-w-md mx-auto leading-relaxed">
                         A confirmation receipt has been sent to your email. Our production director will review fleet availability for your requested date and follow up within <strong>2 business hours</strong>.
                     </p>
                 </div>
@@ -562,20 +578,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-14 bg-white hairline-t text-sm text-[#6B7280]">
+    <footer class="py-14 bg-white hairline-t text-xs text-zinc-500">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center space-x-3.5">
-                <span class="font-black text-xl text-[#000000]">ONYX STAGES</span>
-                <span>&bull;</span>
-                <span>OnyxStages.com &bull; <a href="mailto:booking@onyxstages.com" class="text-black font-bold hover:underline">booking@onyxstages.com</a></span>
+            <div class="flex items-center space-x-3">
+                <span class="font-display font-bold text-lg text-zinc-950">ONYX STAGES</span>
+                <span class="text-zinc-300">&bull;</span>
+                <span>OnyxStages.com &bull; <a href="mailto:booking@onyxstages.com" class="text-zinc-950 font-semibold hover:underline">booking@onyxstages.com</a></span>
             </div>
-            <div class="flex items-center space-x-6 text-xs uppercase tracking-wider text-[#374151] font-bold">
-                <a href="index.html" class="hover:text-[#000000] transition">Home</a>
-                <a href="packages.html" class="text-[#000000] hover:underline transition font-bold">Packages & Add-Ons</a>
-                <a href="#calculator" class="hover:text-[#000000] transition">Rate Engine</a>
-                <a href="mailto:booking@onyxstages.com" class="hover:text-[#000000] transition">Contact: booking@onyxstages.com</a>
+            <div class="flex items-center space-x-6 uppercase tracking-wider text-zinc-600 font-semibold text-[11px]">
+                <a href="index.html" class="hover:text-zinc-950 transition">Home</a>
+                <a href="packages.html" class="hover:text-zinc-950 transition">Packages & Add-Ons</a>
+                <a href="#calculator" class="hover:text-zinc-950 transition">Rate Engine</a>
+                <a href="mailto:booking@onyxstages.com" class="hover:text-zinc-950 transition">Contact</a>
             </div>
-            <div class="text-xs">
+            <div class="text-zinc-400 text-[11px]">
                 &copy; 2026-2027 ONYX STAGES &bull; MOBILE STAGE ARCHITECTURE &bull; NASHVILLE, TN
             </div>
         </div>
@@ -643,14 +659,14 @@
             // Render Included items if any
             if (data.included && data.included.length > 0) {
                 const incHeader = document.createElement('div');
-                incHeader.className = "bg-[#F3F4F6] border border-[#E5E7EB] rounded p-3 text-xs space-y-1.5";
+                incHeader.className = "bg-zinc-50 border border-zinc-200/80 rounded-xl p-3.5 text-xs space-y-1.5";
                 incHeader.innerHTML = `
-                    <div class="font-bold text-[#000000] uppercase tracking-wider flex items-center">
-                        <i class="fa-solid fa-circle-check text-[#000000] mr-2"></i>
+                    <div class="font-bold text-zinc-950 uppercase tracking-wider flex items-center font-mono text-[11px]">
+                        <i class="fa-solid fa-circle-check text-zinc-950 mr-2"></i>
                         ALREADY INCLUDED IN ${selectedTier.toUpperCase()} TIER:
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[#4B5563]">
-                        ${data.included.map(item => `<div>&bull; <strong class="text-[#111827]">${item.name}</strong></div>`).join('')}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-zinc-600">
+                        ${data.included.map(item => `<div>&bull; <strong class="text-zinc-900">${item.name}</strong></div>`).join('')}
                     </div>
                 `;
                 container.appendChild(incHeader);
@@ -659,17 +675,17 @@
             // Render Selectable Add-ons
             data.available.forEach(addon => {
                 const label = document.createElement('label');
-                label.className = "flex items-center justify-between p-3.5 bg-[#FFFFFF] border border-[#D1D5DB] rounded hover:border-[#000000] cursor-pointer transition";
+                label.className = "flex items-center justify-between p-3.5 bg-white border border-zinc-200 rounded-xl hover:border-zinc-950 cursor-pointer transition shadow-sm/50";
                 const priceLabel = (addon.type === 'daily') ? `+$${addon.price}/day` : `+$${addon.price} flat`;
                 label.innerHTML = `
                     <div class="flex items-center space-x-3">
-                        <input type="checkbox" id="${addon.id}" data-price="${addon.price}" data-type="${addon.type}" onchange="calculateLiveTotal()" class="w-4 h-4 rounded text-[#000000] border-[#D1D5DB] focus:ring-[#000000]">
+                        <input type="checkbox" id="${addon.id}" data-price="${addon.price}" data-type="${addon.type}" onchange="calculateLiveTotal()" class="w-4 h-4 rounded text-zinc-950 border-zinc-300 focus:ring-zinc-950">
                         <div>
-                            <div class="text-xs font-bold text-[#000000] uppercase">${addon.name}</div>
-                            <div class="text-[11px] text-[#6B7280]">${addon.desc}</div>
+                            <div class="text-xs font-semibold text-zinc-950 uppercase">${addon.name}</div>
+                            <div class="text-[11px] text-zinc-500">${addon.desc}</div>
                         </div>
                     </div>
-                    <span class="text-xs text-[#000000] font-bold whitespace-nowrap ml-3">${priceLabel}</span>
+                    <span class="text-xs font-mono font-bold text-zinc-950 whitespace-nowrap ml-3">${priceLabel}</span>
                 `;
                 container.appendChild(label);
             });
@@ -680,13 +696,13 @@
             baseRate = rate;
 
             document.querySelectorAll('.tier-btn').forEach(btn => {
-                btn.classList.remove('border-2', 'border-[#000000]', 'bg-[#FFFFFF]');
-                btn.classList.add('bg-[#FFFFFF]', 'border', 'border-[#D1D5DB]');
+                btn.classList.remove('border-2', 'border-zinc-950', 'shadow-sm');
+                btn.classList.add('border', 'border-zinc-200');
             });
 
             const activeBtn = document.getElementById('tier-' + tier);
-            activeBtn.classList.remove('bg-[#FFFFFF]', 'border', 'border-[#D1D5DB]');
-            activeBtn.classList.add('border-2', 'border-[#000000]', 'bg-[#FFFFFF]');
+            activeBtn.classList.remove('border', 'border-zinc-200');
+            activeBtn.classList.add('border-2', 'border-zinc-950', 'shadow-sm');
 
             if(tier === 'dry') document.getElementById('summary-tier-label').innerText = "Dry Stage (Self-Serve)";
             if(tier === 'turnkey') document.getElementById('summary-tier-label').innerText = "Turnkey Live (PA + Gen + TV)";
@@ -873,34 +889,34 @@
     <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8 select-none transition-opacity duration-250 opacity-0" onclick="if(event.target === this) closeLightbox()">
         
         <!-- Top Bar -->
-        <div class="flex justify-between items-center text-white pb-3 border-b border-neutral-800">
+        <div class="flex justify-between items-center text-white pb-3 border-b border-zinc-800">
             <div class="flex items-center space-x-3">
-                <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
-                <span id="lightbox-title" class="font-extrabold uppercase tracking-wider text-sm sm:text-base text-white">ONYX STAGES FLEET ASSET</span>
-                <span class="text-neutral-600 hidden md:inline">|</span>
-                <span class="text-neutral-400 text-xs tracking-widest uppercase hidden md:inline">SKU: CustStage-34619</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                <span id="lightbox-title" class="font-display font-bold uppercase tracking-wider text-sm sm:text-base text-white">ONYX STAGES FLEET ASSET</span>
+                <span class="text-zinc-600 hidden md:inline">|</span>
+                <span class="text-zinc-400 text-xs font-mono uppercase hidden md:inline">SKU: CustStage-34619</span>
             </div>
             <div class="flex items-center space-x-4">
-                <span id="lightbox-counter" class="text-xs font-mono bg-neutral-900 border border-neutral-700 px-3 py-1 rounded text-neutral-300">1 / 9</span>
-                <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-700 text-white hover:bg-white hover:text-black flex items-center justify-center transition shadow">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <span id="lightbox-counter" class="text-xs font-mono bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-zinc-300">1 / 1</span>
+                <button onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 text-white hover:bg-white hover:text-black flex items-center justify-center transition shadow">
+                    <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
         </div>
 
         <!-- Center Image Stage with Clean View -->
         <div class="relative flex-1 flex items-center justify-center my-4 overflow-hidden" onclick="if(event.target === this) closeLightbox()">
-            <img id="lightbox-img" src="" alt="Enlarged Stage View" class="max-h-[70vh] sm:max-h-[76vh] max-w-[92vw] object-contain rounded border border-neutral-800 shadow-2xl transition-all duration-200">
+            <img id="lightbox-img" src="" alt="Enlarged Stage View" class="max-h-[70vh] sm:max-h-[76vh] max-w-[92vw] object-contain rounded-xl border border-zinc-800 shadow-2xl transition-all duration-200">
         </div>
 
         <!-- Bottom Caption Bar -->
-        <div class="bg-neutral-900/90 border border-neutral-800 rounded p-4 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div class="space-y-0.5">
-                <div id="lightbox-caption-title" class="font-bold text-sm uppercase tracking-wider text-white">Stage Overview</div>
-                <div id="lightbox-desc" class="text-xs text-neutral-400 max-w-4xl leading-relaxed">Description details...</div>
+                <div id="lightbox-caption-title" class="font-display font-bold text-sm uppercase tracking-wider text-white">Stage Overview</div>
+                <div id="lightbox-desc" class="text-xs text-zinc-400 max-w-4xl leading-relaxed">Description details...</div>
             </div>
             <div class="flex items-center space-x-3 text-xs w-full sm:w-auto justify-end">
-                <a id="lightbox-direct-link" href="" target="_blank" class="px-4 py-2 bg-white text-black font-bold uppercase tracking-wider rounded hover:bg-neutral-200 transition flex items-center">
+                <a id="lightbox-direct-link" href="" target="_blank" class="px-4 py-2 bg-white text-black font-semibold uppercase tracking-wider rounded-lg hover:bg-zinc-200 transition flex items-center">
                     <i class="fa-solid fa-arrow-up-right-from-square mr-1.5 text-xs"></i> Full Res
                 </a>
             </div>
