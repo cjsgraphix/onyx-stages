@@ -502,6 +502,7 @@
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_cc" value="cj@onyxstages.com" />
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting ONYX STAGES. We have received your mobile stage reservation request. Our production and logistics director will review fleet availability for your requested event date and contact you directly within 2 business hours with an itemized proposal and date hold agreement. Direct inquiries: booking@onyxstages.com | OnyxStages.com" />
                 <input type="text" name="_honey" style="display:none" />
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div class="space-y-1.5">
@@ -546,8 +547,14 @@
                     <i class="fa-solid fa-arrow-right ml-2.5 text-sm"></i>
                 </button>
 
-                <div id="booking-success" class="hidden p-4 bg-neutral-900 text-white text-sm text-center font-bold rounded">
-                    ✓ INTAKE DISPATCHED: Confirmation sent. Our team will contact you within 2 business hours.
+                <div id="booking-success" class="hidden p-5 bg-[#111827] border border-neutral-700 text-white rounded text-center space-y-2 shadow-lg">
+                    <div class="flex items-center justify-center space-x-2 text-emerald-400 font-bold text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-circle-check text-base"></i>
+                        <span>Reservation Intake Received</span>
+                    </div>
+                    <p class="text-xs text-neutral-300 max-w-md mx-auto leading-relaxed">
+                        A confirmation receipt has been sent to your email. Our production director will review fleet availability for your requested date and follow up within <strong>2 business hours</strong>.
+                    </p>
                 </div>
             </form>
 
