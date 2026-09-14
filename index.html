@@ -497,8 +497,9 @@
                 </p>
             </div>
 
-            <form name="booking-inquiry" method="POST" data-netlify="true" netlify onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
+            <form name="booking-inquiry" method="POST" action="/" data-netlify="true" netlify data-netlify-honeypot="bot-field" onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
                 <input type="hidden" name="form-name" value="booking-inquiry" />
+                <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div class="space-y-1.5">
                         <label class="text-xs text-[#374151] uppercase font-bold">Event / Organization *</label>
