@@ -497,9 +497,12 @@
                 </p>
             </div>
 
-            <form name="booking-inquiry" method="POST" action="/" data-netlify="true" netlify data-netlify-honeypot="bot-field" onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
-                <input type="hidden" name="form-name" value="booking-inquiry" />
-                <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+            <form name="booking-inquiry" method="POST" action="https://formsubmit.co/booking@onyxstages.com" onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
+                <input type="hidden" name="_subject" value="🌟 New Onyx Stages Booking Reservation Inquiry" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_cc" value="cj@onyxstages.com" />
+                <input type="text" name="_honey" style="display:none" />
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div class="space-y-1.5">
                         <label class="text-xs text-[#374151] uppercase font-bold">Event / Organization *</label>
@@ -736,20 +739,33 @@
         function handleReservation(e) {
             e.preventDefault();
             const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Transmitting...</span> <i class="fa-solid fa-spinner fa-spin ml-2"></i>';
+            submitBtn.disabled = true;
+
             const formData = new FormData(form);
-            
-            fetch("/", {
+
+            fetch("https://formsubmit.co/ajax/booking@onyxstages.com", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
+                headers: { 
+                    'Accept': 'application/json'
+                },
+                body: formData
             })
-            .then(() => {
+            .then(res => res.json())
+            .then(data => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
                 document.getElementById('booking-success').classList.remove('hidden');
                 form.reset();
             })
-            .catch((err) => {
-                console.error("Form submit error:", err);
+            .catch(err => {
+                console.error("Form error:", err);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
                 document.getElementById('booking-success').classList.remove('hidden');
+                form.reset();
             });
         }
 
