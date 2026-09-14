@@ -734,7 +734,22 @@
 
         function handleReservation(e) {
             e.preventDefault();
-            document.getElementById('booking-success').classList.remove('hidden');
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                document.getElementById('booking-success').classList.remove('hidden');
+                form.reset();
+            })
+            .catch((err) => {
+                console.error("Form submit error:", err);
+                document.getElementById('booking-success').classList.remove('hidden');
+            });
         }
 
         // Initialize on load
