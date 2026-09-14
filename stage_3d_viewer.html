@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX STAGES // Interactive 3D Digital Rig & Stage Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <style>
+        * {
+            font-family: "Times New Roman", Times, "Liberation Serif", serif;
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0A0A0C;
+            color: #F3F4F6;
+        }
+        #webgl-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .glass-panel {
+            background: rgba(17, 17, 17, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hotspot-pin {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #FFFFFF;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            z-index: 20;
+            pointer-events: auto;
+        }
+        .hotspot-pin:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background: #FFFFFF;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="relative select-none">
+
+    <!-- 3D Canvas -->
+    <div id="canvas-container" class="w-full h-full absolute inset-0">
+        <canvas id="webgl-canvas"></canvas>
+    </div>
+
+    <!-- Hotspot Container (HTML Overlay over 3D coordinates) -->
+    <div id="hotspot-overlay" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6 flex justify-between items-center pointer-events-none">
+        <div class="glass-panel px-5 py-3 rounded flex items-center space-x-4 pointer-events-auto shadow-2xl">
+            <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-black text-sm rounded">
+                OS
+            </div>
+            <div>
+                <h1 class="font-black text-lg tracking-tight uppercase leading-none text-white">ONYX STAGES 3D</h1>
+                <div class="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">8.5' × 24' Dual-Stage Interactive Fleet Rig</div>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-3 pointer-events-auto">
+            <a href="index.html" class="glass-panel px-4 py-2.5 rounded text-xs uppercase font-bold tracking-wider hover:bg-white hover:text-black transition flex items-center space-x-2">
+                <i class="fa-solid fa-arrow-left text-[11px]"></i>
+                <span>Exit to Main Site</span>
+            </a>
+            <a href="packages.html" class="glass-panel px-4 py-2.5 rounded text-xs uppercase font-bold tracking-wider hover:bg-white hover:text-black transition">
+                <span>View Rates</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Floating Interactive Control Center (Left Bottom HUD) -->
+    <div class="absolute bottom-6 left-6 z-30 max-w-sm w-full space-y-3 pointer-events-auto">
+        
+        <!-- Main Rig State Controls -->
+        <div class="glass-panel p-4 rounded space-y-3 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-neutral-700 pb-2">
+                <span class="text-xs uppercase font-bold tracking-wider text-gray-300">RIG DEPLOYMENT ANIMATION</span>
+                <span id="rig-status-badge" class="text-[10px] bg-white text-black font-black px-2 py-0.5 rounded uppercase">DEPLOYED (LIVE)</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+                <button id="btn-deploy" onclick="setDeployment(true)" class="py-2.5 px-3 bg-white text-black font-black text-xs uppercase rounded hover:bg-gray-200 transition text-center flex items-center justify-center space-x-1.5 shadow">
+                    <i class="fa-solid fa-expand text-[11px]"></i>
+                    <span>Deploy Stages</span>
+                </button>
+                <button id="btn-stow" onclick="setDeployment(false)" class="py-2.5 px-3 bg-neutral-800 text-gray-300 font-bold text-xs uppercase rounded hover:bg-neutral-700 hover:text-white transition text-center flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-compress text-[11px]"></i>
+                    <span>Stow Rig (Transit)</span>
+                </button>
+            </div>
+
+            <!-- Individual Fixture Toggles -->
+            <div class="grid grid-cols-3 gap-2 pt-1">
+                <button id="btn-toggle-audio" onclick="toggleAudioRig()" class="p-2 bg-neutral-800 border border-neutral-700 text-[11px] font-bold uppercase rounded hover:bg-neutral-700 transition flex flex-col items-center justify-center space-y-1">
+                    <i class="fa-solid fa-volume-high text-xs text-white"></i>
+                    <span>PA Sound</span>
+                </button>
+                <button id="btn-toggle-lights" onclick="toggleDMXLights()" class="p-2 bg-neutral-800 border border-neutral-700 text-[11px] font-bold uppercase rounded hover:bg-neutral-700 transition flex flex-col items-center justify-center space-y-1">
+                    <i class="fa-solid fa-lightbulb text-xs text-amber-400"></i>
+                    <span>DMX Light</span>
+                </button>
+                <button id="btn-toggle-screen" onclick="toggleScreen()" class="p-2 bg-neutral-800 border border-neutral-700 text-[11px] font-bold uppercase rounded hover:bg-neutral-700 transition flex flex-col items-center justify-center space-y-1">
+                    <i class="fa-solid fa-tv text-xs text-cyan-400"></i>
+                    <span>75" 4K TV</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Camera Views Selector -->
+        <div class="glass-panel p-3 rounded shadow-2xl flex items-center justify-between overflow-x-auto space-x-1 text-xs">
+            <span class="text-[10px] uppercase font-bold text-gray-400 mr-2 whitespace-nowrap">VIEWS:</span>
+            <button onclick="setCameraView('hero')" class="px-2.5 py-1 bg-neutral-800 hover:bg-white hover:text-black rounded font-bold uppercase transition">3/4 Hero</button>
+            <button onclick="setCameraView('stage')" class="px-2.5 py-1 bg-neutral-800 hover:bg-white hover:text-black rounded font-bold uppercase transition">16' Stage</button>
+            <button onclick="setCameraView('rear')" class="px-2.5 py-1 bg-neutral-800 hover:bg-white hover:text-black rounded font-bold uppercase transition">8' Rear</button>
+            <button onclick="setCameraView('tongue')" class="px-2.5 py-1 bg-neutral-800 hover:bg-white hover:text-black rounded font-bold uppercase transition">Tongue</button>
+            <button onclick="setCameraView('top')" class="px-2.5 py-1 bg-neutral-800 hover:bg-white hover:text-black rounded font-bold uppercase transition">Top</button>
+        </div>
+
+    </div>
+
+    <!-- Right Lighting / Environment & Instructions HUD -->
+    <div class="absolute bottom-6 right-6 z-30 max-w-xs w-full space-y-3 pointer-events-auto">
+        <div class="glass-panel p-4 rounded space-y-2.5 shadow-2xl text-xs">
+            <div class="flex justify-between items-center border-b border-neutral-700 pb-1.5">
+                <span class="uppercase font-bold tracking-wider text-gray-300">STUDIO LIGHTING MODE</span>
+                <button onclick="toggleAutoRotate()" id="btn-rotate" class="text-[10px] text-gray-400 hover:text-white flex items-center space-x-1">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <span>360° SPIN</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-1.5 pt-1">
+                <button onclick="setEnvironment('studio')" class="py-1.5 px-2 bg-white text-black font-bold uppercase rounded text-center">Studio</button>
+                <button onclick="setEnvironment('night')" class="py-1.5 px-2 bg-neutral-800 hover:bg-neutral-700 font-bold uppercase rounded text-center">Night Concert</button>
+                <button onclick="setEnvironment('sunset')" class="py-1.5 px-2 bg-neutral-800 hover:bg-neutral-700 font-bold uppercase rounded text-center">Sunset</button>
+            </div>
+            <p class="text-[11px] text-gray-400 leading-snug pt-1">
+                <i class="fa-solid fa-hand-pointer mr-1"></i> Drag to rotate 360° &bull; Scroll to zoom &bull; Click numbered pins to inspect authentic dealer build photos.
+            </p>
+        </div>
+    </div>
+
+    <!-- Real Photo Hotspot Modal -->
+    <div id="photo-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full rounded-lg overflow-hidden border border-neutral-700 p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closePhotoModal()" class="absolute top-4 right-4 w-8 h-8 bg-neutral-800 hover:bg-white hover:text-black rounded-full flex items-center justify-center font-bold text-white transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div>
+                <span class="text-xs bg-white text-black font-black px-2 py-0.5 rounded uppercase" id="modal-tag">AUTHENTIC BUILD PHOTO</span>
+                <h3 class="text-xl font-black uppercase text-white mt-1.5" id="modal-title">16' Motorized Stage Platform</h3>
+            </div>
+            <div class="aspect-[16/10] bg-neutral-900 rounded overflow-hidden border border-neutral-800">
+                <img id="modal-img" src="" alt="Actual Stage Rig Photo" class="w-full h-full object-cover">
+            </div>
+            <p class="text-sm text-gray-300" id="modal-desc">
+                High-resolution authentic manufacturing photograph showing the exact physical asset.
+            </p>
+        </div>
+    </div>
+
+    <!-- Three.js 3D Engine Script -->
+    <script>
+        let scene, camera, renderer, controls;
+        let rigGroup, sideStagePivot, rearStagePivot, awningMesh, railsGroup, stairsGroup, avGroup, dmxLight1, dmxLight2;
+        let isDeployed = true;
+        let audioRigVisible = true;
+        let dmxLightsOn = true;
+        let screenOn = true;
+        let autoRotate = false;
+
+        const hotspots = [
+            { id: 1, pos: new THREE.Vector3(0, 4.2, 5.2), title: "16' Motorized Main Stage Deck", tag: "MAIN STAGE", img: "assets/real_trailer_stage_deck.jpg", desc: "16-foot fold-down side stage platform powered by a 3,500# electric winch assist with triple scissor leveling jacks, 48\" perimeter black guardrails, and 18' weather canopy." },
+            { id: 2, pos: new THREE.Vector3(-12.5, 3.5, 0), title: "8' Rear Ramp Stage Wing / DJ Booth", tag: "REAR WING", img: "assets/real_trailer_rear_wing.jpg", desc: "8-foot rear ramp door deployed as an elevated secondary performance deck with drop-leg jack stabilizers, black safety rails, and entry gate." },
+            { id: 3, pos: new THREE.Vector3(14, 2.5, 0), title: "Extended A-Frame Tongue & Power Architecture", tag: "CHASSIS / POWER", img: "assets/real_trailer_tongue_platform.jpg", desc: "Extended A-frame tongue with expanded steel generator tray housing the 0 dB silent lithium battery architecture, blackout stoneguard, and electric tongue jack." },
+            { id: 4, pos: new THREE.Vector3(0, 5.5, 0), title: "Insulated Interior Cabin & 18K BTU Climate Control", tag: "INTERIOR CABIN", img: "assets/real_trailer_interior_cabin.jpg", desc: "Bright white aluminum wipe-down interior walls, coin rubber RTP flooring, 7 dimmable ceiling LED lights, and 18,000 BTU mini-split heating & air conditioning." },
+            { id: 5, pos: new THREE.Vector3(2, 1.2, 0), title: "Dual 7,000# Torsion Axles & Mag Wheels", tag: "RUNNING GEAR", img: "assets/real_trailer_axles_wheels.jpg", desc: "Tandem 7,000 lb Dexter commercial torsion axles (14,000# GVWR), 4-wheel electric brakes, aluminum mag wheels, and 14-ply heavy-duty radial tires." }
+        ];
+
+        function init3D() {
+            const container = document.getElementById('canvas-container');
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0C0D10);
+            scene.fog = new THREE.FogExp2(0x0C0D10, 0.015);
+
+            camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.5, 500);
+            camera.position.set(28, 16, 26);
+
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl-canvas'), antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2 - 0.02; // Don't go below floor
+            controls.minDistance = 8;
+            controls.maxDistance = 80;
+            controls.target.set(0, 4, 0);
+
+            setupLighting();
+            setupFloor();
+            buildStageTrailer();
+            setupHotspots();
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function setupLighting() {
+            const ambient = new THREE.AmbientLight(0xFFFFFF, 0.6);
+            scene.add(ambient);
+
+            const keyLight = new THREE.DirectionalLight(0xFFFFFF, 1.2);
+            keyLight.position.set(30, 40, 25);
+            keyLight.castShadow = true;
+            keyLight.shadow.mapSize.width = 2048;
+            keyLight.shadow.mapSize.height = 2048;
+            keyLight.shadow.camera.near = 10;
+            keyLight.shadow.camera.far = 100;
+            keyLight.shadow.camera.left = -25;
+            keyLight.shadow.camera.right = 25;
+            keyLight.shadow.camera.top = 25;
+            keyLight.shadow.camera.bottom = -25;
+            keyLight.shadow.bias = -0.0005;
+            scene.add(keyLight);
+
+            const fillLight = new THREE.DirectionalLight(0x90CAF9, 0.5);
+            fillLight.position.set(-25, 20, -25);
+            scene.add(fillLight);
+
+            // DMX Stage Spotlights
+            dmxLight1 = new THREE.SpotLight(0x00E5FF, 3.5, 30, Math.PI / 6, 0.4, 1);
+            dmxLight1.position.set(-3, 8.2, 3.5);
+            dmxLight1.target.position.set(-2, 3, 5);
+            scene.add(dmxLight1);
+            scene.add(dmxLight1.target);
+
+            dmxLight2 = new THREE.SpotLight(0xFF007F, 3.5, 30, Math.PI / 6, 0.4, 1);
+            dmxLight2.position.set(3, 8.2, 3.5);
+            dmxLight2.target.position.set(2, 3, 5);
+            scene.add(dmxLight2);
+            scene.add(dmxLight2.target);
+        }
+
+        function setupFloor() {
+            const floorGeo = new THREE.PlaneGeometry(200, 200);
+            const floorMat = new THREE.MeshStandardMaterial({
+                color: 0x111317,
+                roughness: 0.25,
+                metalness: 0.35
+            });
+            const floor = new THREE.Mesh(floorGeo, floorMat);
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.y = 0;
+            floor.receiveShadow = true;
+            scene.add(floor);
+
+            const grid = new THREE.GridHelper(100, 50, 0x333333, 0x1F2228);
+            grid.position.y = 0.01;
+            scene.add(grid);
+        }
+
+        function buildStageTrailer() {
+            rigGroup = new THREE.Group();
+
+            const matteBlack = new THREE.MeshStandardMaterial({ color: 0x141416, roughness: 0.45, metalness: 0.5 });
+            const glossBlack = new THREE.MeshStandardMaterial({ color: 0x0A0A0C, roughness: 0.2, metalness: 0.8 });
+            const diamondPlate = new THREE.MeshStandardMaterial({ color: 0x222226, roughness: 0.35, metalness: 0.85 });
+            const whiteInterior = new THREE.MeshStandardMaterial({ color: 0xFAFAFA, roughness: 0.5, metalness: 0.1 });
+            const woodDeck = new THREE.MeshStandardMaterial({ color: 0x1E1E22, roughness: 0.7, metalness: 0.1 });
+            const safetyRailMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.3, metalness: 0.7 });
+            const ledEmissive = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+
+            // 1. MAIN TRAILER BODY (24ft Length x 8.5ft Width x 8ft Height)
+            const bodyGeo = new THREE.BoxGeometry(24, 7.5, 8.5);
+            const bodyMesh = new THREE.Mesh(bodyGeo, matteBlack);
+            bodyMesh.position.set(0, 4.75, 0);
+            bodyMesh.castShadow = true;
+            bodyMesh.receiveShadow = true;
+            rigGroup.add(bodyMesh);
+
+            const interiorGeo = new THREE.BoxGeometry(23.2, 7.0, 7.8);
+            const interiorMesh = new THREE.Mesh(interiorGeo, whiteInterior);
+            interiorMesh.position.set(0, 4.75, 0.2);
+            rigGroup.add(interiorMesh);
+
+            const skirtGeo = new THREE.BoxGeometry(24.2, 1.4, 8.7);
+            const skirtMesh = new THREE.Mesh(skirtGeo, diamondPlate);
+            skirtMesh.position.set(0, 1.7, 0);
+            rigGroup.add(skirtMesh);
+
+            for (let i = -8; i <= 8; i += 4) {
+                const ledGeo = new THREE.BoxGeometry(2.5, 0.1, 0.3);
+                const led = new THREE.Mesh(ledGeo, ledEmissive);
+                led.position.set(i, 8.1, 0);
+                rigGroup.add(led);
+            }
+
+            // 2. EXTENDED FRONT TONGUE & GENERATOR DECK
+            const tongueGroup = new THREE.Group();
+            const aFrameGeo = new THREE.BoxGeometry(5.5, 0.5, 3.5);
+            const aFrame = new THREE.Mesh(aFrameGeo, glossBlack);
+            aFrame.position.set(14.5, 1.3, 0);
+            tongueGroup.add(aFrame);
+
+            const genDeckGeo = new THREE.BoxGeometry(3.5, 0.2, 3.2);
+            const genDeck = new THREE.Mesh(genDeckGeo, diamondPlate);
+            genDeck.position.set(13.8, 1.6, 0);
+            tongueGroup.add(genDeck);
+
+            const batteryGeo = new THREE.BoxGeometry(1.6, 1.4, 1.2);
+            const batteryMat = new THREE.MeshStandardMaterial({ color: 0x1A1D20, roughness: 0.3, metalness: 0.6 });
+            const battery = new THREE.Mesh(batteryGeo, batteryMat);
+            battery.position.set(13.8, 2.4, 0);
+            tongueGroup.add(battery);
+
+            const jackGeo = new THREE.CylinderGeometry(0.15, 0.15, 2.2);
+            const jack = new THREE.Mesh(jackGeo, glossBlack);
+            jack.position.set(16.5, 1.4, 0);
+            tongueGroup.add(jack);
+            rigGroup.add(tongueGroup);
+
+            // 3. TANDEM AXLES & WHEELS
+            const wheelGeo = new THREE.CylinderGeometry(1.3, 1.3, 0.8, 24);
+            const tireMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.8 });
+            const rimMat = new THREE.MeshStandardMaterial({ color: 0x333333, metalness: 0.9, roughness: 0.2 });
+
+            const wheelPositions = [
+                { x: 1.8, z: 4.3 }, { x: -1.8, z: 4.3 },
+                { x: 1.8, z: -4.3 }, { x: -1.8, z: -4.3 }
+            ];
+
+            wheelPositions.forEach(pos => {
+                const wheel = new THREE.Mesh(wheelGeo, tireMat);
+                wheel.rotation.x = Math.PI / 2;
+                wheel.position.set(pos.x, 1.3, pos.z);
+                wheel.castShadow = true;
+
+                const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 0.85, 16), rimMat);
+                wheel.add(rim);
+                rigGroup.add(wheel);
+            });
+
+            // 4. 16' SIDE STAGE
+            sideStagePivot = new THREE.Group();
+            sideStagePivot.position.set(0, 1.2, 4.25);
+
+            const stageDeckGeo = new THREE.BoxGeometry(16, 0.3, 6.8);
+            const stageDeck = new THREE.Mesh(stageDeckGeo, woodDeck);
+            stageDeck.position.set(0, 0, 3.4);
+            stageDeck.castShadow = true;
+            stageDeck.receiveShadow = true;
+            sideStagePivot.add(stageDeck);
+
+            [-6, 0, 6].forEach(xOff => {
+                const jackBase = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.1, 0.8), glossBlack);
+                jackBase.position.set(xOff, -0.65, 5.8);
+                sideStagePivot.add(jackBase);
+            });
+
+            railsGroup = new THREE.Group();
+            const railGeo = new THREE.BoxGeometry(16, 3.5, 0.1);
+            const railFront = new THREE.Mesh(railGeo, safetyRailMat);
+            railFront.position.set(0, 1.8, 6.7);
+            railsGroup.add(railFront);
+
+            const sideRailGeo = new THREE.BoxGeometry(0.1, 3.5, 6.8);
+            const railLeft = new THREE.Mesh(sideRailGeo, safetyRailMat);
+            railLeft.position.set(-7.95, 1.8, 3.4);
+            railsGroup.add(railLeft);
+
+            const railRight = new THREE.Mesh(sideRailGeo, safetyRailMat);
+            railRight.position.set(7.95, 1.8, 3.4);
+            railsGroup.add(railRight);
+            sideStagePivot.add(railsGroup);
+
+            stairsGroup = new THREE.Group();
+            [6, -6].forEach(x => {
+                for (let s = 1; s <= 3; s++) {
+                    const step = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.35, 1.0), glossBlack);
+                    step.position.set(x, (s * 0.35) - 0.2, 6.8 + (s * 0.9));
+                    stairsGroup.add(step);
+                }
+            });
+            sideStagePivot.add(stairsGroup);
+            rigGroup.add(sideStagePivot);
+
+            // 5. 8' REAR RAMP STAGE WING
+            rearStagePivot = new THREE.Group();
+            rearStagePivot.position.set(-12, 1.2, 0);
+
+            const rearDeckGeo = new THREE.BoxGeometry(7.5, 0.3, 7.5);
+            const rearDeck = new THREE.Mesh(rearDeckGeo, woodDeck);
+            rearDeck.position.set(-3.75, 0, 0);
+            rearDeck.castShadow = true;
+            rearStagePivot.add(rearDeck);
+
+            const rearRail = new THREE.Mesh(new THREE.BoxGeometry(0.1, 3.5, 7.5), safetyRailMat);
+            rearRail.position.set(-7.45, 1.8, 0);
+            rearStagePivot.add(rearRail);
+            rigGroup.add(rearStagePivot);
+
+            // 6. 18' POWER AWNING
+            const awningGeo = new THREE.BoxGeometry(18, 0.15, 8.5);
+            const awningMat = new THREE.MeshStandardMaterial({ color: 0x18181C, roughness: 0.9 });
+            awningMesh = new THREE.Mesh(awningGeo, awningMat);
+            awningMesh.position.set(0, 8.6, 4.2);
+            awningMesh.rotation.x = 0.08;
+            awningMesh.castShadow = true;
+            rigGroup.add(awningMesh);
+
+            // 7. PRODUCTION AV
+            avGroup = new THREE.Group();
+
+            [-7, 7].forEach(x => {
+                const sub = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.0, 1.8), glossBlack);
+                sub.position.set(x, 2.2, 7.8);
+                avGroup.add(sub);
+
+                const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 3.5), glossBlack);
+                pole.position.set(x, 4.5, 7.8);
+                avGroup.add(pole);
+
+                const topPA = new THREE.Mesh(new THREE.BoxGeometry(1.2, 2.0, 1.1), glossBlack);
+                topPA.position.set(x, 6.2, 7.8);
+                avGroup.add(topPA);
+            });
+
+            const screenGeo = new THREE.BoxGeometry(5.5, 3.2, 0.1);
+            const screenMat = new THREE.MeshBasicMaterial({ color: 0x00E5FF });
+            const screenMesh = new THREE.Mesh(screenGeo, screenMat);
+            screenMesh.position.set(0, 5.2, -3.8);
+            avGroup.add(screenMesh);
+
+            const miniSplitGeo = new THREE.BoxGeometry(2.2, 1.8, 1.2);
+            const miniSplit = new THREE.Mesh(miniSplitGeo, glossBlack);
+            miniSplit.position.set(11.2, 4.8, 3.8);
+            avGroup.add(miniSplit);
+
+            rigGroup.add(avGroup);
+            scene.add(rigGroup);
+        }
+
+        function setDeployment(deploy) {
+            isDeployed = deploy;
+            const badge = document.getElementById('rig-status-badge');
+            const btnDeploy = document.getElementById('btn-deploy');
+            const btnStow = document.getElementById('btn-stow');
+
+            if (deploy) {
+                badge.innerText = "DEPLOYED (LIVE)";
+                badge.className = "text-[10px] bg-white text-black font-black px-2 py-0.5 rounded uppercase";
+                btnDeploy.className = "py-2.5 px-3 bg-white text-black font-black text-xs uppercase rounded transition text-center shadow";
+                btnStow.className = "py-2.5 px-3 bg-neutral-800 text-gray-300 font-bold text-xs uppercase rounded hover:bg-neutral-700 hover:text-white transition text-center";
+
+                new TWEEN.Tween(sideStagePivot.rotation).to({ x: 0 }, 1000).easing(TWEEN.Easing.Cubic.Out).start();
+                new TWEEN.Tween(rearStagePivot.rotation).to({ z: 0 }, 1000).easing(TWEEN.Easing.Cubic.Out).start();
+                new TWEEN.Tween(awningMesh.scale).to({ z: 1 }, 800).start();
+                railsGroup.visible = true;
+                stairsGroup.visible = true;
+                avGroup.visible = audioRigVisible;
+            } else {
+                badge.innerText = "STOWED (TRANSIT)";
+                badge.className = "text-[10px] bg-neutral-700 text-gray-300 font-black px-2 py-0.5 rounded uppercase";
+                btnDeploy.className = "py-2.5 px-3 bg-neutral-800 text-gray-300 font-bold text-xs uppercase rounded hover:bg-neutral-700 hover:text-white transition text-center";
+                btnStow.className = "py-2.5 px-3 bg-white text-black font-black text-xs uppercase rounded transition text-center shadow";
+
+                new TWEEN.Tween(sideStagePivot.rotation).to({ x: -Math.PI / 2 }, 1000).easing(TWEEN.Easing.Cubic.In).start();
+                new TWEEN.Tween(rearStagePivot.rotation).to({ z: Math.PI / 2 }, 1000).easing(TWEEN.Easing.Cubic.In).start();
+                new TWEEN.Tween(awningMesh.scale).to({ z: 0.1 }, 800).start();
+                railsGroup.visible = false;
+                stairsGroup.visible = false;
+                avGroup.visible = false;
+            }
+        }
+
+        function toggleAudioRig() {
+            audioRigVisible = !audioRigVisible;
+            avGroup.visible = audioRigVisible && isDeployed;
+            const btn = document.getElementById('btn-toggle-audio');
+            btn.classList.toggle('border-white', audioRigVisible);
+        }
+
+        function toggleDMXLights() {
+            dmxLightsOn = !dmxLightsOn;
+            dmxLight1.visible = dmxLightsOn;
+            dmxLight2.visible = dmxLightsOn;
+            const btn = document.getElementById('btn-toggle-lights');
+            btn.classList.toggle('border-amber-400', dmxLightsOn);
+        }
+
+        function toggleScreen() {
+            screenOn = !screenOn;
+            const btn = document.getElementById('btn-toggle-screen');
+            btn.classList.toggle('border-cyan-400', screenOn);
+        }
+
+        function setCameraView(view) {
+            const targets = {
+                hero: { pos: { x: 28, y: 16, z: 26 }, look: { x: 0, y: 4, z: 0 } },
+                stage: { pos: { x: 2, y: 6, z: 18 }, look: { x: 0, y: 4, z: 5 } },
+                rear: { pos: { x: -25, y: 8, z: 8 }, look: { x: -10, y: 3, z: 0 } },
+                tongue: { pos: { x: 25, y: 6, z: 8 }, look: { x: 13, y: 3, z: 0 } },
+                top: { pos: { x: 0, y: 45, z: 0.1 }, look: { x: 0, y: 0, z: 0 } }
+            };
+
+            const t = targets[view];
+            if (t) {
+                new TWEEN.Tween(camera.position).to(t.pos, 1200).easing(TWEEN.Easing.Cubic.InOut).start();
+                new TWEEN.Tween(controls.target).to(t.look, 1200).easing(TWEEN.Easing.Cubic.InOut).start();
+            }
+        }
+
+        function setEnvironment(mode) {
+            if (mode === 'studio') {
+                scene.background.set(0x0C0D10);
+                scene.fog.color.set(0x0C0D10);
+            } else if (mode === 'night') {
+                scene.background.set(0x040508);
+                scene.fog.color.set(0x040508);
+                dmxLight1.intensity = 6;
+                dmxLight2.intensity = 6;
+            } else if (mode === 'sunset') {
+                scene.background.set(0x2A1518);
+                scene.fog.color.set(0x2A1518);
+            }
+        }
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            controls.autoRotate = autoRotate;
+            controls.autoRotateSpeed = 1.2;
+            const btn = document.getElementById('btn-rotate');
+            btn.classList.toggle('text-white', autoRotate);
+        }
+
+        function setupHotspots() {
+            const container = document.getElementById('hotspot-overlay');
+            container.innerHTML = '';
+
+            hotspots.forEach(h => {
+                const pin = document.createElement('div');
+                pin.className = 'hotspot-pin';
+                pin.id = `hotspot-${h.id}`;
+                pin.innerHTML = `<span>${h.id}</span>`;
+                pin.onclick = () => openPhotoModal(h);
+                container.appendChild(pin);
+            });
+        }
+
+        function updateHotspots() {
+            hotspots.forEach(h => {
+                const el = document.getElementById(`hotspot-${h.id}`);
+                if (!el) return;
+
+                const vector = h.pos.clone().project(camera);
+                const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
+                const y = (-(vector.y * 0.5) + 0.5) * window.innerHeight;
+
+                if (vector.z > 1) {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = 'flex';
+                    el.style.left = `${x}px`;
+                    el.style.top = `${y}px`;
+                }
+            });
+        }
+
+        function openPhotoModal(hotspot) {
+            document.getElementById('modal-tag').innerText = hotspot.tag;
+            document.getElementById('modal-title').innerText = hotspot.title;
+            document.getElementById('modal-desc').innerText = hotspot.desc;
+            document.getElementById('modal-img').src = hotspot.img;
+            document.getElementById('photo-modal').classList.remove('hidden');
+            document.getElementById('photo-modal').classList.add('flex');
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photo-modal').classList.add('hidden');
+            document.getElementById('photo-modal').classList.remove('flex');
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update();
+            controls.update();
+            updateHotspots();
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init3D;
+    </script>
+</body>
+</html>

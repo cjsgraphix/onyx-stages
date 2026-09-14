@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#FBFBFB] text-[#111827] antialiased selection:bg-[#000000] selection:text-[#FFFFFF] scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX STAGES // Custom 8.5' × 24' Blackout Mobile Stage Fleet</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
+                        sans: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
+                        mono: ['"Times New Roman"', 'Times', 'Liberation Serif', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: "#000000",
+                            charcoal: "#111827",
+                            slate: "#374151",
+                            muted: "#4B5563",
+                            border: "#D1D5DB",
+                            surface: "#F9FAFB",
+                            pure: "#FFFFFF"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            font-size: 18px;
+        }
+        @media (min-width: 1024px) {
+            html {
+                font-size: 19px;
+            }
+        }
+
+        * {
+            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
+        }
+        body {
+            font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
+            background-color: #FBFBFB;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        /* Framer / Swiss Sub-Pixel Grid Texture */
+        .framer-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+        }
+
+        .hairline-b { border-bottom: 1px solid #E5E7EB; }
+        .hairline-t { border-top: 1px solid #E5E7EB; }
+        .hairline-r { border-right: 1px solid #E5E7EB; }
+        .hairline-l { border-left: 1px solid #E5E7EB; }
+
+        .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.03);
+        }
+
+        .framer-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .framer-card:hover {
+            border-color: #000000;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#FBFBFB] text-[#111827] overflow-x-hidden framer-grid">
+
+    <!-- Top Status Ribbon -->
+    <div class="w-full bg-[#FFFFFF] hairline-b text-sm text-[#4B5563] py-2.5 px-4 sm:px-8 flex justify-between items-center z-50 sticky top-0 shadow-sm">
+        <div class="flex items-center space-x-3 sm:space-x-4">
+            <span class="inline-flex items-center text-[#000000] font-bold tracking-wider uppercase">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#000000] animate-pulse mr-2"></span>
+                OFFICIAL SPRING 2027 FLEET LAUNCH // 8.5' × 24' BLACKOUT STAGE RIG
+            </span>
+            <span class="hidden md:inline text-neutral-300">|</span>
+            <span class="hidden md:inline text-[#4B5563]">14,000# GVWR &bull; 100A COMMERCIAL SERVICE</span>
+            <span class="hidden lg:inline text-neutral-300">|</span>
+            <span class="hidden lg:inline text-[#4B5563]">16' MOTORIZED DECK &bull; 18' AWNING</span>
+        </div>
+        <div class="flex items-center space-x-4 text-sm">
+            <span class="text-[#4B5563] hidden sm:inline">NASHVILLE &bull; REGIONAL SOUTHEAST</span>
+            <span class="bg-[#000000] text-[#FFFFFF] px-3 py-1 rounded text-xs font-bold tracking-widest uppercase">NOW BOOKING 2027</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-[#FFFFFF]/95 backdrop-blur-md hairline-b z-40 relative">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-24 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3.5 group">
+                <div class="w-12 h-12 bg-[#000000] border border-neutral-800 rounded overflow-hidden shadow-sm transition-transform group-hover:scale-95 flex items-center justify-center">
+                    <img src="assets/logo/onyx_stages_emblem.png" alt="Onyx Stages Crest" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-3xl tracking-tight text-[#000000] uppercase">ONYX <span class="text-[#6B7280]">STAGES</span></span>
+                    <span class="text-xs text-[#6B7280] tracking-widest uppercase">OnyxStages.com &bull; Mobile Stage Architecture</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm uppercase tracking-widest text-[#374151] font-bold">
+                <a href="#comps" class="hover:text-[#000000] transition flex items-center space-x-1.5">
+                    <span class="text-[#000000] font-black">01.</span><span>Cost Comps</span>
+                </a>
+                <a href="packages.html" class="text-[#000000] hover:text-[#4B5563] transition flex items-center space-x-1.5 underline decoration-2 underline-offset-4">
+                    <span class="text-[#000000] font-black">02.</span><span>Packages & Specs</span>
+                </a>
+                <a href="#calculator" class="hover:text-[#000000] transition flex items-center space-x-1.5">
+                    <span class="text-[#000000] font-black">03.</span><span>Rental Rates</span>
+                </a>
+                <a href="#reserve-section" class="hover:text-[#000000] transition flex items-center space-x-1.5">
+                    <span class="text-[#000000] font-black">04.</span><span>Reserve</span>
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="#calculator" class="px-6 py-3 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest transition shadow-sm">
+                    Instant Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-24 sm:pt-24 sm:pb-28 hairline-b bg-[#FFFFFF]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-[#6B7280] pb-6 hairline-b mb-12">
+                <div class="flex items-center space-x-2">
+                    <span class="text-[#000000] font-bold">[00 // FLEET ASSET DOSSIER]</span>
+                    <span>2026 SLE 8.5' × 24' BLACKOUT STAGE TRAILER</span>
+                </div>
+                <div class="text-[#000000] font-bold uppercase tracking-wider">
+                    16' MOTORIZED DECK &bull; 18' ARMLESS AWNING &bull; 100A COMMERCIAL SERVICE
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column: Typography & Proposition -->
+                <div class="lg:col-span-6 space-y-7">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded text-[#000000] text-sm font-bold uppercase tracking-wider">
+                        <span>Commercial Fleet Rig</span>
+                        <span>&bull;</span>
+                        <span>20-Minute Solo Winch Setup</span>
+                    </div>
+
+                    <h1 class="font-black text-5xl sm:text-6xl lg:text-[76px] uppercase tracking-tight leading-[0.96] text-[#000000]">
+                        THE TURNKEY<br>
+                        BLACKOUT STAGE<br>
+                        FOR YOUR EVENT.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-[#374151] leading-relaxed max-w-xl">
+                        A clean, architectural black-on-black mobile stage designed for concerts, festivals, 5Ks, and corporate brand tours. Featuring a 16-foot motorized fold-down performance deck, an 18-foot armless lateral power awning, finished insulated interior cabin, Behringer concert audio, 75" 4K digital screen, and 0 dB silent lithium battery power.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3.5 pt-2 text-sm">
+                        <a href="#calculator" class="px-8 py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded uppercase tracking-wider flex items-center justify-center transition shadow-sm">
+                            <span>Calculate Rental Quote</span>
+                            <i class="fa-solid fa-arrow-right ml-3 text-sm"></i>
+                        </a>
+                        <a href="#comps" class="px-8 py-4 bg-[#F9FAFB] hover:bg-[#E5E7EB] text-[#000000] border border-[#9CA3AF] rounded font-bold uppercase tracking-wider flex items-center justify-center transition">
+                            <span>View Market Cost Comps</span>
+                        </a>
+                    </div>
+
+                    <!-- Metric Strip -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 text-sm">
+                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
+                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">STAGE DECK</div>
+                            <div class="text-2xl text-[#000000] font-black mt-1">16 FT FOLD-OUT</div>
+                        </div>
+                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
+                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">POWER AWNING</div>
+                            <div class="text-2xl text-[#000000] font-black mt-1">18 FT ARMLESS</div>
+                        </div>
+                        <div class="bg-[#F9FAFB] p-4 sm:p-5 rounded border border-[#E5E7EB]">
+                            <div class="text-[#6B7280] text-xs uppercase tracking-wider">DEPLOYMENT</div>
+                            <div class="text-2xl text-[#000000] font-black mt-1">20 MIN WINCH</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Hero Production Image with Auto-Scroll & Clean View -->
+                <div class="lg:col-span-6 relative" id="gallery" onmouseenter="pauseHeroAutoplay()" onmouseleave="resumeHeroAutoplay()">
+                    <div class="relative bg-white p-3.5 rounded-lg border border-[#D1D5DB] shadow-md cursor-pointer group" onclick="openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc)">
+                        
+                        <!-- Image Container (100% Unobstructed View) -->
+                        <div class="relative aspect-[16/10] overflow-hidden rounded bg-neutral-900 border border-[#E5E7EB]">
+                            <img id="hero-main-img" src="assets/onyx_stage_broadside_empty_studio.jpg" alt="ONYX 24ft Mobile Blackout Stage Rig Deployed in Automotive Studio" class="w-full h-full object-cover transition-opacity duration-200">
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3.5 left-3.5 text-[11px] sm:text-xs bg-black/85 backdrop-blur-md border border-white/20 px-3 py-1 text-white font-bold rounded shadow-sm uppercase tracking-wider z-20" id="hero-badge-tag">
+                                FLEET ASSET // STUDIO OVERVIEW
+                            </div>
+                            
+                            <!-- Sleek Floating Enlarge Pill Button -->
+                            <button type="button" onclick="event.stopPropagation(); openLightbox(currentHeroSrc, currentHeroTitle, currentHeroDesc);" class="absolute top-3.5 right-3.5 text-xs bg-black/85 hover:bg-black text-white font-bold px-3.5 py-1.5 uppercase rounded-full shadow-md tracking-wider flex items-center space-x-1.5 transition-all z-20 backdrop-blur-md border border-white/20 hover:scale-105" title="Click to view full-screen lightbox">
+                                <i class="fa-solid fa-expand text-xs"></i>
+                                <span>ENLARGE FULL RES</span>
+                            </button>
+                        </div>
+
+                        <!-- Clean Caption Area Below the Image (ZERO obstruction on the image) -->
+                        <div class="pt-3.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                            <div>
+                                <div id="hero-caption-title" class="text-sm sm:text-base font-black text-[#000000] uppercase tracking-wide">
+                                    24' Blackout Mobile Stage Rig Studio Overview
+                                </div>
+                                <div id="hero-caption-sub" class="text-xs text-[#6B7280] font-medium">
+                                    16' Motorized Stage Deck • 8' Rear Ramp Stage • 18' Overhead Power Canopy • 75" 4K Display
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-[#6B7280] self-end sm:self-center shrink-0">
+                                <span class="bg-black text-white px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider">OFFICIAL SPEC</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Hero View Selector Bar (4 Curated Studio Visuals) -->
+                    <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <button type="button" onclick="showHeroSlide(0, true)" class="hero-thumb-btn active px-2.5 py-2 text-xs font-bold uppercase rounded border border-[#000000] bg-[#000000] text-white text-center transition-all truncate">
+                            1. Studio 3/4 Rig
+                        </button>
+                        <button type="button" onclick="showHeroSlide(1, true)" class="hero-thumb-btn px-2.5 py-2 text-xs font-bold uppercase rounded border border-[#D1D5DB] bg-white text-[#4B5563] hover:border-[#000000] hover:text-[#000000] text-center transition-all truncate">
+                            2. 16' Stage Deck
+                        </button>
+                        <button type="button" onclick="showHeroSlide(2, true)" class="hero-thumb-btn px-2.5 py-2 text-xs font-bold uppercase rounded border border-[#D1D5DB] bg-white text-[#4B5563] hover:border-[#000000] hover:text-[#000000] text-center transition-all truncate">
+                            3. Interior Cabin
+                        </button>
+                        <button type="button" onclick="showHeroSlide(3, true)" class="hero-thumb-btn px-2.5 py-2 text-xs font-bold uppercase rounded border border-[#D1D5DB] bg-white text-[#4B5563] hover:border-[#000000] hover:text-[#000000] text-center transition-all truncate">
+                            4. 8' Rear Wing
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 01: ITEMIZED MARKET COMPS MATRIX -->
+    <section id="comps" class="py-24 hairline-b bg-[#F9FAFB]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+                <div>
+                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[01 // MARKET PRICE DISRUPTION]</span>
+                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Line-By-Line Organizer Cost Comparison</h2>
+                </div>
+                <div class="text-sm text-[#4B5563] max-w-md">
+                    Actual market rental comps showing why event organizers save $1,000–$6,000 per booking with our turnkey stage rig.
+                </div>
+            </div>
+
+            <!-- Comps Table -->
+            <div class="overflow-x-auto border border-[#9CA3AF] rounded">
+                <table class="w-full text-sm text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#111827] text-white uppercase text-xs tracking-wider">
+                            <th class="p-4 border-r border-neutral-700 w-1/4">Expense Line Item</th>
+                            <th class="p-4 border-r border-neutral-700 w-1/4">Option 1: Heavy Hydraulic Stage<br><span class="text-xs text-neutral-400 font-normal normal-case">(Stageline SL100 / Large AV House)</span></th>
+                            <th class="p-4 border-r border-neutral-700 w-1/4">Option 2: Pieced-Together Rental<br><span class="text-xs text-neutral-400 font-normal normal-case">(Party Rental Decks + Multi-Vendor AV)</span></th>
+                            <th class="p-4 bg-[#000000] text-white border-l border-neutral-700 w-1/4">Option 3: ONYX Turnkey Stage<br><span class="text-xs text-neutral-300 font-normal normal-case">(24' Mobile Dual-Stage Rig)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#D1D5DB] text-[#374151]">
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Stage Platform & Frame</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$3,500 – $4,200</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$850 – $1,100 <span class="text-xs text-[#6B7280]">(10x 4x8 plywood decks)</span></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(16' Fold-Down Deck)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Canopy / Weather Cover</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Included in heavy roof</em></td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$750 – $1,200 <span class="text-xs text-[#6B7280]">(20x20 frame tent)</span></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(18' Armless Awning)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Safety Guardrails & Stairs</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$250 – $400</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$250 – $350</td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Black Rails + Dual Stairs)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Concert Audio System (PA)</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$2,000 – $3,500</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$800 – $1,400 <span class="text-xs text-[#6B7280]">(Rented sound kit)</span></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Behringer Tops + 18" Sub + Dual Monitors)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Digital Video / TV Display</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$1,500 – $2,500 <span class="text-xs text-[#6B7280]">(LED trailer)</span></td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Not Available on bare stage</em></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(75" 4K Smart Display)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Power Generation (Battery / Gen)</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$600 – $900</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$350 – $500 <span class="text-xs text-[#6B7280]">(Sunbelt/Home Depot)</span></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(0 dB Silent LiFePO4 Battery Station)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Backstage Gear & Tech Cabin</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$1,200 – $1,800 <span class="text-xs text-[#6B7280]">(Side tent / pod)</span></td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]"><em>Not Available (Sit in vehicles)</em></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(Insulated Enclosed Cabin)</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#F9FAFB]">
+                            <td class="p-3.5 font-bold text-[#000000] border-r border-[#D1D5DB]">Delivery, Rigging & Labor</td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$800 – $1,500 <span class="text-xs text-[#6B7280]">(3-4 CDL crew)</span></td>
+                            <td class="p-3.5 border-r border-[#D1D5DB]">$600 – $900 <span class="text-xs text-[#6B7280]">(4-man crew / 4 hrs)</span></td>
+                            <td class="p-3.5 bg-[#F3F4F6] font-bold text-[#000000]">INCLUDED <span class="font-normal text-xs">(1-Tech 20-Min Setup)</span></td>
+                        </tr>
+                        <tr class="bg-[#111827] text-white font-bold border-t-2 border-[#000000]">
+                            <td class="p-4 text-base uppercase tracking-wider">TOTAL ORGANIZER COST</td>
+                            <td class="p-4 text-base">$8,700 – $12,600</td>
+                            <td class="p-4 text-base">$3,600 – $5,100</td>
+                            <td class="p-4 text-base bg-[#000000] text-white">$2,750 / DAY</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div class="bg-[#F9FAFB] border border-[#E5E7EB] p-6 rounded">
+                    <div class="text-sm font-bold text-[#000000] uppercase tracking-wider mb-2">WHY CLIENTS CHOOSE US OVER HEAVY HYDRAULIC RIGS</div>
+                    <p class="text-sm text-[#4B5563] leading-relaxed">
+                        Festivals, 5Ks, and brewery events save <strong>$6,000+ per date</strong>. Our compact 24' footprint sets up in downtown alleys, parks, and city plazas where semi-truck crane stages physically cannot fit.
+                    </p>
+                </div>
+                <div class="bg-[#F9FAFB] border border-[#E5E7EB] p-6 rounded">
+                    <div class="text-sm font-bold text-[#000000] uppercase tracking-wider mb-2">WHY CLIENTS CHOOSE US OVER PIECED-TOGETHER RENTALS</div>
+                    <p class="text-sm text-[#4B5563] leading-relaxed">
+                        Organizers avoid coordinating with 3 different rental vendors. They receive an all-in-one delivery with a 75" 4K video display, Behringer sound, stage monitors, and an insulated enclosed stage rig for <strong>$1,000 less</strong>.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 04: LIVE RENTAL RATE ENGINE -->
+    <section id="calculator" class="py-24 hairline-b bg-[#F9FAFB]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+                <div>
+                    <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[04 // RENTAL RATE ENGINE]</span>
+                    <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase mt-2">Instant Production Rate Calculator</h2>
+                </div>
+                <div class="text-sm text-[#4B5563] max-w-md">
+                    Select your production tier, schedule, and optional add-ons below for an immediate estimate.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Controls -->
+                <div class="lg:col-span-7 space-y-7">
+                    
+                    <!-- 1. Package Tier Selection -->
+                    <div class="space-y-3.5">
+                        <label class="text-sm uppercase text-[#374151] font-bold flex justify-between">
+                            <span>1. Select Rig Configuration</span>
+                            <span class="text-[#000000]">[REQUIRED]</span>
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                            <button type="button" onclick="selectTier('dry', 1450)" id="tier-dry" class="tier-btn p-5 bg-[#FFFFFF] border border-[#D1D5DB] rounded text-left hover:border-[#000000] transition">
+                                <div class="font-bold text-lg text-[#000000] uppercase">DRY STAGE</div>
+                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Stage Trailer + 18' Awning only. Client provides AV.</div>
+                                <div class="text-[#000000] text-lg font-bold mt-4">$1,450 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            </button>
+
+                            <button type="button" onclick="selectTier('turnkey', 2750)" id="tier-turnkey" class="tier-btn p-5 bg-[#FFFFFF] border-2 border-[#000000] rounded text-left transition relative">
+                                <span class="absolute top-2 right-2 bg-[#000000] text-white text-[10px] font-bold px-2 py-0.5 uppercase rounded tracking-wider">POPULAR</span>
+                                <div class="font-bold text-lg text-[#000000] uppercase">TURNKEY LIVE</div>
+                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Stage + Behringer Sound, Dual Monitors, 75" TV, Lights & Silent Battery Power.</div>
+                                <div class="text-[#000000] text-lg font-bold mt-4">$2,750 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            </button>
+
+                            <button type="button" onclick="selectTier('brand', 4500)" id="tier-brand" class="tier-btn p-5 bg-[#FFFFFF] border border-[#D1D5DB] rounded text-left hover:border-[#000000] transition">
+                                <div class="font-bold text-lg text-[#000000] uppercase">BRAND VIP</div>
+                                <div class="text-xs text-[#6B7280] mt-1.5 leading-relaxed">Turnkey stage, 75" 4K screen, wrap-ready exterior, sound & on-site tech.</div>
+                                <div class="text-[#000000] text-lg font-bold mt-4">$4,500 <span class="text-xs text-[#6B7280]">/DAY</span></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Event Duration & Season Selection -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-sm uppercase text-[#374151] font-bold">2. Event Schedule</label>
+                            <select id="calc-duration" onchange="calculateLiveTotal()" class="w-full bg-[#FFFFFF] border border-[#D1D5DB] rounded px-4 py-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                                <option value="1">1 Day (8 Hours On-Site)</option>
+                                <option value="2">2-Day Weekend (15% Multi-Day Discount)</option>
+                                <option value="3">3-Day Festival Run (25% Multi-Day Discount)</option>
+                                <option value="7">7-Day Week Tour (40% Tour Discount)</option>
+                                <option value="30">30-Day Multi-City Brand Tour</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm uppercase text-[#374151] font-bold">3. Booking Calendar</label>
+                            <select id="calc-season" onchange="calculateLiveTotal()" class="w-full bg-[#FFFFFF] border border-[#D1D5DB] rounded px-4 py-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                                <option value="2026">2026 Event Calendar (Standard Rate)</option>
+                                <option value="2027">2027 Advance Booking (10% Early Bird Discount)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 3. Production Add-Ons (Dynamic by Tier) -->
+                    <div class="space-y-3.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm uppercase text-[#374151] font-bold">4. Tailored Production Add-Ons</label>
+                            <span class="text-xs text-[#6B7280] font-normal" id="addons-tier-hint">Showing options for Turnkey Live</span>
+                        </div>
+                        <div id="dynamic-addons-container" class="space-y-2.5">
+                            <!-- Injected dynamically by renderAddons() -->
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="packages.html" class="inline-flex items-center text-xs font-bold text-[#000000] uppercase tracking-wider hover:text-[#4B5563] underline decoration-1 underline-offset-4">
+                                <i class="fa-solid fa-table-list mr-2 text-[#000000]"></i>
+                                View Full Itemized Equipment & Package Comparison Matrix (40+ Line Specs) &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Live Ledger Card -->
+                <div class="lg:col-span-5 bg-white border border-[#9CA3AF] rounded p-8 sticky top-28 space-y-6 shadow-md">
+                    <div class="flex justify-between items-center hairline-b pb-4">
+                        <span class="text-xs text-[#4B5563] uppercase tracking-widest font-bold">ESTIMATED RATE LEDGER</span>
+                        <span class="text-xs bg-[#111827] text-white px-3 py-1 rounded font-bold uppercase tracking-wider">LIVE TOTAL</span>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="text-[#6B7280] text-xs uppercase tracking-wider">TOTAL ESTIMATED RATE:</div>
+                        <div class="font-black text-6xl text-[#000000] tracking-tight" id="display-total-price">
+                            $2,750
+                        </div>
+                        <div class="text-sm text-[#6B7280] pt-1">
+                            Includes regional delivery (first 30 miles), setup, leveling, and post-event teardown.
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 pt-5 hairline-t text-sm">
+                        <div class="flex justify-between"><span class="text-[#6B7280]">Configuration:</span><span class="text-[#000000] font-bold" id="summary-tier-label">Turnkey Live Package</span></div>
+                        <div class="flex justify-between"><span class="text-[#6B7280]">Duration:</span><span class="text-[#000000] font-bold" id="summary-duration-label">1 Day (8 Hours)</span></div>
+                        <div class="flex justify-between"><span class="text-[#6B7280]">Calendar Mode:</span><span class="text-[#000000] font-bold" id="summary-season-label">2026 Standard Season</span></div>
+                        <div class="flex justify-between"><span class="text-[#6B7280]">Power Source:</span><span class="text-[#000000] font-bold">50A Quiet Inverter Generator</span></div>
+                    </div>
+
+                    <div class="pt-5 hairline-t">
+                        <a href="#reserve-section" class="w-full py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest flex items-center justify-center transition shadow-sm">
+                            <span>Hold Date With This Rate</span>
+                            <i class="fa-solid fa-arrow-right ml-2.5 text-sm"></i>
+                        </a>
+                        <p class="text-xs text-[#6B7280] text-center mt-3.5">
+                            Zero obligation. Dates held for 48 hours pending contract review.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 05: RESERVATION INTAKE -->
+    <section id="reserve-section" class="py-24 hairline-b bg-[#F9FAFB]">
+        <div class="max-w-3xl mx-auto px-4 sm:px-8">
+            
+            <div class="text-center space-y-2.5 mb-12">
+                <span class="text-sm text-[#000000] tracking-widest uppercase font-bold">[05 // DATE RESERVATION]</span>
+                <h2 class="font-black text-3xl sm:text-4xl lg:text-5xl text-[#000000] uppercase">Hold Your Stage Date</h2>
+                <p class="text-sm text-[#4B5563]">
+                    Submit your target date below. Our production director will review availability and dispatch a formal agreement within 2 hours.
+                </p>
+            </div>
+
+            <form name="booking-inquiry" method="POST" data-netlify="true" netlify onsubmit="handleReservation(event)" class="bg-white border border-[#D1D5DB] rounded p-9 space-y-6 shadow-sm">
+                <input type="hidden" name="form-name" value="booking-inquiry" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Event / Organization *</label>
+                        <input type="text" name="organization" required placeholder="e.g. City Parks & Rec / Summerfest" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Contact Name *</label>
+                        <input type="text" name="name" required placeholder="Full Name" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Email *</label>
+                        <input type="email" name="email" required placeholder="producer@domain.com" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Phone Number *</label>
+                        <input type="tel" name="phone" required placeholder="(555) 000-0000" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Target Event Date *</label>
+                        <input type="date" name="date" required class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-[#374151] uppercase font-bold">Event City & State *</label>
+                        <input type="text" name="city" required placeholder="e.g. Nashville, TN" class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-xs text-[#374151] uppercase font-bold">Audio & Staging Notes</label>
+                    <textarea name="notes" rows="3" placeholder="Expected attendance, band setup, generator needs, custom sponsor branding requirements..." class="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded p-3.5 text-[#000000] text-sm focus:border-[#000000] focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-[#000000] hover:bg-[#374151] text-white font-bold rounded text-sm uppercase tracking-widest transition flex items-center justify-center shadow-sm">
+                    <span>Submit Reservation Request</span>
+                    <i class="fa-solid fa-arrow-right ml-2.5 text-sm"></i>
+                </button>
+
+                <div id="booking-success" class="hidden p-4 bg-neutral-900 text-white text-sm text-center font-bold rounded">
+                    ✓ INTAKE DISPATCHED: Confirmation sent. Our team will contact you within 2 business hours.
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-14 bg-white hairline-t text-sm text-[#6B7280]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-3.5">
+                <span class="font-black text-xl text-[#000000]">ONYX STAGES</span>
+                <span>&bull;</span>
+                <span>OnyxStages.com &bull; <a href="mailto:booking@onyxstages.com" class="text-black font-bold hover:underline">booking@onyxstages.com</a></span>
+            </div>
+            <div class="flex items-center space-x-6 text-xs uppercase tracking-wider text-[#374151] font-bold">
+                <a href="index.html" class="hover:text-[#000000] transition">Home</a>
+                <a href="packages.html" class="text-[#000000] hover:underline transition font-bold">Packages & Add-Ons</a>
+                <a href="#calculator" class="hover:text-[#000000] transition">Rate Engine</a>
+                <a href="mailto:booking@onyxstages.com" class="hover:text-[#000000] transition">Contact: booking@onyxstages.com</a>
+            </div>
+            <div class="text-xs">
+                &copy; 2026-2027 ONYX STAGES &bull; $2M COMMERCIAL LIABILITY &bull; NASHVILLE, TN
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Controller -->
+    <script>
+        let selectedTier = 'turnkey';
+        let baseRate = 2750;
+
+        const tierAddonDefinitions = {
+            dry: {
+                hint: "Showing add-on options for Dry Stage (Rig & Awning only)",
+                included: [],
+                available: [
+                    { id: "add_truck", name: "Heavy-Duty Tow Truck Rental (3/4-Ton Pickup)", desc: "Commercial 3/4-ton tow truck equipped with Class V hitch & electric brake controller", price: 150, type: "daily" },
+                    { id: "add_pa", name: "High-Output PA Sound System", desc: "2x 15\" powered tops, 18\" sub, digital mixer & 4 wireless mics", price: 500, type: "daily" },
+                    { id: "add_gen", name: "50A Inverter Generator / Battery", desc: "Super-quiet power architecture with full tank / battery", price: 250, type: "daily" },
+                    { id: "add_screen", name: "75\" Outdoor 4K Video Display", desc: "Mounted high-nit screen for sponsor reels & live slides", price: 300, type: "daily" },
+                    { id: "add_engineer", name: "Dedicated On-Site Sound Engineer", desc: "Live sound mixing & band changeovers throughout event", price: 600, type: "daily" },
+                    { id: "add_wrap", name: "Custom Sponsor Magnet / Banner Kit", desc: "Blackout fascia & stage skirt customized with client logos", price: 850, type: "flat" },
+                    { id: "add_monitors", name: "Dual Stage Floor Monitors & Sub", desc: "2x active wedge monitors facing performers + extra 18\" sub", price: 350, type: "daily" },
+                    { id: "add_ac", name: "Interior Climate & Power Package", desc: "Activates 18,000 BTU mini-split AC/Heat & 100A cabin power", price: 350, type: "daily" }
+                ]
+            },
+            turnkey: {
+                hint: "Showing options for Turnkey Live (Sound, 75\" TV, Lights & Power included)",
+                included: [
+                    { name: "PA Sound Tops & 18\" Subwoofer", desc: "2x 15\" powered tops, 18\" sub & digital mixer" },
+                    { name: "4x Solid Wireless Microphones", desc: "4-channel UHF metal handheld mics with auto-scan & iPad mixer" },
+                    { name: "75\" Outdoor 4K Video Display", desc: "Mounted high-brightness presentation display" },
+                    { name: "50A Quiet Inverter / Silent Battery", desc: "Zero-noise continuous power architecture" },
+                    { name: "4x High-Output LED Stage Pars", desc: "RGBW stage illumination with controller" },
+                    { name: "AV Setup & Sound Check Tech", desc: "Audio rigging, calibration & line check" }
+                ],
+                available: [
+                    { id: "add_truck", name: "Heavy-Duty Tow Truck Rental (3/4-Ton Pickup)", desc: "Commercial 3/4-ton tow truck equipped with Class V hitch & electric brake controller", price: 150, type: "daily" },
+                    { id: "add_engineer", name: "Dedicated Full-Day Sound Engineer", desc: "All-day live mixing for multi-band festival lineup", price: 600, type: "daily" },
+                    { id: "add_wrap", name: "Custom Sponsor Magnet / Banner Kit", desc: "Blackout fascia & stage skirt customized with client logos", price: 850, type: "flat" },
+                    { id: "add_monitors", name: "Dual Stage Floor Monitors & Dual Sub", desc: "2x active wedge monitors for artists + 2nd 18\" subwoofer", price: 350, type: "daily" },
+                    { id: "add_ac", name: "Interior Climate & Power Package", desc: "Activates 18,000 BTU mini-split AC/Heat & 100A cabin power", price: 350, type: "daily" }
+                ]
+            },
+            brand: {
+                hint: "Showing options for Brand VIP (Full AV, Sound Engineer, Branding & Climate included)",
+                included: [
+                    { name: "Full Turnkey Audio, 75\" 4K TV & Lights", desc: "Complete concert-grade sound & visual system" },
+                    { name: "18,000 BTU Climate-Controlled Interior", desc: "Insulated white aluminum cabin with AC/Heat & 100A power" },
+                    { name: "Dedicated Sound Engineer & Stage Manager", desc: "Full event audio mixing & logistical coordination" },
+                    { name: "Custom Sponsor Magnet & Skirt Kit", desc: "Custom branded stage fascia & skirt graphics" },
+                    { name: "Continuous Power & Fuel Logistics", desc: "Quiet generator with redundant battery architecture" }
+                ],
+                available: [
+                    { id: "add_truck", name: "Heavy-Duty Tow Truck Rental (3/4-Ton Pickup)", desc: "Commercial 3/4-ton tow truck equipped with Class V hitch & electric brake controller", price: 150, type: "daily" },
+                    { id: "add_monitors", name: "Dual Stage Monitors & Dual Sub", desc: "2x active wedge monitors for artists + 2nd 18\" subwoofer", price: 350, type: "daily" },
+                    { id: "add_driver", name: "Multi-City Logistics Driver / Roadie", desc: "Dedicated logistics driver & transit manager", price: 800, type: "daily" }
+                ]
+            }
+        };
+
+        function renderAddons() {
+            const data = tierAddonDefinitions[selectedTier];
+            document.getElementById('addons-tier-hint').innerText = data.hint;
+            const container = document.getElementById('dynamic-addons-container');
+            container.innerHTML = '';
+
+            // Render Included items if any
+            if (data.included && data.included.length > 0) {
+                const incHeader = document.createElement('div');
+                incHeader.className = "bg-[#F3F4F6] border border-[#E5E7EB] rounded p-3 text-xs space-y-1.5";
+                incHeader.innerHTML = `
+                    <div class="font-bold text-[#000000] uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-circle-check text-[#000000] mr-2"></i>
+                        ALREADY INCLUDED IN ${selectedTier.toUpperCase()} TIER:
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[#4B5563]">
+                        ${data.included.map(item => `<div>&bull; <strong class="text-[#111827]">${item.name}</strong></div>`).join('')}
+                    </div>
+                `;
+                container.appendChild(incHeader);
+            }
+
+            // Render Selectable Add-ons
+            data.available.forEach(addon => {
+                const label = document.createElement('label');
+                label.className = "flex items-center justify-between p-3.5 bg-[#FFFFFF] border border-[#D1D5DB] rounded hover:border-[#000000] cursor-pointer transition";
+                const priceLabel = (addon.type === 'daily') ? `+$${addon.price}/day` : `+$${addon.price} flat`;
+                label.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" id="${addon.id}" data-price="${addon.price}" data-type="${addon.type}" onchange="calculateLiveTotal()" class="w-4 h-4 rounded text-[#000000] border-[#D1D5DB] focus:ring-[#000000]">
+                        <div>
+                            <div class="text-xs font-bold text-[#000000] uppercase">${addon.name}</div>
+                            <div class="text-[11px] text-[#6B7280]">${addon.desc}</div>
+                        </div>
+                    </div>
+                    <span class="text-xs text-[#000000] font-bold whitespace-nowrap ml-3">${priceLabel}</span>
+                `;
+                container.appendChild(label);
+            });
+        }
+
+        function selectTier(tier, rate) {
+            selectedTier = tier;
+            baseRate = rate;
+
+            document.querySelectorAll('.tier-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-[#000000]', 'bg-[#FFFFFF]');
+                btn.classList.add('bg-[#FFFFFF]', 'border', 'border-[#D1D5DB]');
+            });
+
+            const activeBtn = document.getElementById('tier-' + tier);
+            activeBtn.classList.remove('bg-[#FFFFFF]', 'border', 'border-[#D1D5DB]');
+            activeBtn.classList.add('border-2', 'border-[#000000]', 'bg-[#FFFFFF]');
+
+            if(tier === 'dry') document.getElementById('summary-tier-label').innerText = "Dry Stage (Self-Serve)";
+            if(tier === 'turnkey') document.getElementById('summary-tier-label').innerText = "Turnkey Live (PA + Gen + TV)";
+            if(tier === 'brand') document.getElementById('summary-tier-label').innerText = "Brand VIP & Tour Rig";
+
+            renderAddons();
+            calculateLiveTotal();
+        }
+
+        function calculateLiveTotal() {
+            const duration = parseInt(document.getElementById('calc-duration').value);
+            const season = document.getElementById('calc-season').value;
+
+            let multiplier = duration;
+            let durationDiscount = 1.0;
+
+            if (duration === 1) {
+                durationDiscount = 1.0;
+                document.getElementById('summary-duration-label').innerText = "1 Day (8 Hours)";
+            } else if (duration === 2) {
+                durationDiscount = 0.85; // 15% off
+                document.getElementById('summary-duration-label').innerText = "2-Day Weekend";
+            } else if (duration === 3) {
+                durationDiscount = 0.75; // 25% off
+                document.getElementById('summary-duration-label').innerText = "3-Day Festival";
+            } else if (duration === 7) {
+                durationDiscount = 0.60; // 40% off
+                document.getElementById('summary-duration-label').innerText = "7-Day Week Tour";
+            } else if (duration === 30) {
+                durationDiscount = 0.35; // Monthly bulk
+                document.getElementById('summary-duration-label').innerText = "30-Day Roadshow";
+            }
+
+            let seasonDiscount = (season === '2027') ? 0.90 : 1.0; // 10% off early bird 2027
+            document.getElementById('summary-season-label').innerText = (season === '2027') ? "2027 Advance (10% Off)" : "2026 Standard Season";
+
+            let baseCost = (baseRate * multiplier * durationDiscount) * seasonDiscount;
+
+            let addOns = 0;
+            const checkboxes = document.querySelectorAll('#dynamic-addons-container input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    const price = parseFloat(cb.getAttribute('data-price') || 0);
+                    const type = cb.getAttribute('data-type');
+                    if (type === 'daily') {
+                        addOns += (price * multiplier * seasonDiscount);
+                    } else {
+                        addOns += price;
+                    }
+                }
+            });
+
+            let total = Math.round(baseCost + addOns);
+            document.getElementById('display-total-price').innerText = '$' + total.toLocaleString();
+        }
+
+        function handleReservation(e) {
+            e.preventDefault();
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+
+        // Initialize on load
+        renderAddons();
+        calculateLiveTotal();
+
+        /* ============================================================
+           HERO MASTER PHOTOGRAPHY & LIGHTBOX
+        ============================================================ */
+        const heroSlides = [
+            {
+                src: 'assets/onyx_stage_broadside_empty_studio.jpg',
+                title: '24\' Blackout Mobile Stage Rig Studio Overview',
+                desc: 'Pristine commercial automotive studio shot of the official 8.5ft x 24ft blackout stage trailer showing deployed 18ft power awning, 16ft motorized stage deck, 8ft rear stage wing, safety railings, 75" display, and stabilizing jacks.',
+                badge: 'FLEET ASSET // STUDIO OVERVIEW',
+                captionTitle: "24' Blackout Mobile Stage Rig Studio Overview",
+                captionSub: "16' Motorized Stage Deck • 8' Rear Ramp Stage • 18' Power Canopy • 75\" 4K Display"
+            }
+        ];
+
+        let currentHeroIndex = 0;
+        let currentHeroSrc = heroSlides[0].src;
+        let currentHeroTitle = heroSlides[0].title;
+        let currentHeroDesc = heroSlides[0].desc;
+
+        const galleryItems = [
+            {
+                src: 'assets/onyx_stage_broadside_empty_studio.jpg',
+                title: '24\' Blackout Mobile Stage Rig Studio Overview',
+                desc: 'Pristine commercial automotive studio shot of the official 8.5ft x 24ft blackout stage trailer showing deployed 18ft power awning, 16ft motorized stage deck, 8ft rear stage wing, safety railings, 75" display, and stabilizing jacks.'
+            }
+        ];
+
+        let currentLightboxIndex = 0;
+
+        function openLightbox(src, title, desc) {
+            const index = galleryItems.findIndex(item => item.src === src);
+            if (index !== -1) {
+                currentLightboxIndex = index;
+            } else {
+                currentLightboxIndex = 0;
+            }
+            renderLightbox();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 250);
+        }
+
+        function renderLightbox() {
+            const item = galleryItems[currentLightboxIndex];
+            const img = document.getElementById('lightbox-img');
+            img.src = item.src;
+            img.alt = item.title;
+            document.getElementById('lightbox-title').innerText = item.title;
+            document.getElementById('lightbox-caption-title').innerText = item.title;
+            document.getElementById('lightbox-desc').innerText = item.desc;
+            document.getElementById('lightbox-counter').innerText = (currentLightboxIndex + 1) + ' / ' + galleryItems.length;
+            document.getElementById('lightbox-direct-link').href = item.src;
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryItems.length;
+            renderLightbox();
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryItems.length) % galleryItems.length;
+            renderLightbox();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('lightbox-modal');
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+
+    <!-- FULL-SCREEN INTERACTIVE LIGHTBOX MODAL -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8 select-none transition-opacity duration-250 opacity-0" onclick="if(event.target === this) closeLightbox()">
+        
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center text-white pb-3 border-b border-neutral-800">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
+                <span id="lightbox-title" class="font-extrabold uppercase tracking-wider text-sm sm:text-base text-white">ONYX STAGES FLEET ASSET</span>
+                <span class="text-neutral-600 hidden md:inline">|</span>
+                <span class="text-neutral-400 text-xs tracking-widest uppercase hidden md:inline">SKU: CustStage-34619</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="lightbox-counter" class="text-xs font-mono bg-neutral-900 border border-neutral-700 px-3 py-1 rounded text-neutral-300">1 / 9</span>
+                <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-700 text-white hover:bg-white hover:text-black flex items-center justify-center transition shadow">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Image Stage with Clean View -->
+        <div class="relative flex-1 flex items-center justify-center my-4 overflow-hidden" onclick="if(event.target === this) closeLightbox()">
+            <img id="lightbox-img" src="" alt="Enlarged Stage View" class="max-h-[70vh] sm:max-h-[76vh] max-w-[92vw] object-contain rounded border border-neutral-800 shadow-2xl transition-all duration-200">
+        </div>
+
+        <!-- Bottom Caption Bar -->
+        <div class="bg-neutral-900/90 border border-neutral-800 rounded p-4 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div class="space-y-0.5">
+                <div id="lightbox-caption-title" class="font-bold text-sm uppercase tracking-wider text-white">Stage Overview</div>
+                <div id="lightbox-desc" class="text-xs text-neutral-400 max-w-4xl leading-relaxed">Description details...</div>
+            </div>
+            <div class="flex items-center space-x-3 text-xs w-full sm:w-auto justify-end">
+                <a id="lightbox-direct-link" href="" target="_blank" class="px-4 py-2 bg-white text-black font-bold uppercase tracking-wider rounded hover:bg-neutral-200 transition flex items-center">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-1.5 text-xs"></i> Full Res
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
