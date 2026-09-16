@@ -10,7 +10,7 @@
 | **Trailer Acquisition** | $59,900 | $59,900 | $59,900 | 2026 ATC PRO300S 24ft all-aluminum stage trailer |
 | **Taxes, Title & Registration** | $4,200 | $4,500 | $5,000 | State-dependent (avg ~7%) |
 | **Rooftop A/C Unit (15k BTU with Heat Strip)** | $1,200 | $1,800 | $2,400 | Trailer has A/C prep wired |
-| **50A Inverter Generator (7k–9.5k Watt)** | $2,200 | $3,200 | $4,500 | Quiet run inverter (Honda EU7000is or Predator 9500) |
+| **DuroMax 16,000W Inverter Generator (50A)** | $2,800 | $3,500 | $4,500 | DuroMax 16,000-Watt super-quiet clean sine wave inverter generator |
 | **Professional Audio (PA) System** | $2,800 | $4,500 | $7,500 | 2x 15" Powered tops (QSC K12.2 / EV), 1x 18" Sub, 16-ch digital mixer, 4 wireless mics |
 | **Stage Lighting Package** | $800 | $1,400 | $2,500 | 6x LED DMX stage wash pars, mounting clamps, wireless DMX controller |
 | **TV / Digital Signage Package** | $600 | $1,200 | $2,000 | 55"–65" high-nit outdoor display for trailer interior/exterior backer |
