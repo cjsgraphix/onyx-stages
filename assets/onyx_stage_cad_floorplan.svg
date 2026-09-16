@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" width="100%" height="100%" style="background:#0c0d0e; font-family:'Space Grotesk', -apple-system, sans-serif;">
+  <defs>
+    <!-- Grid pattern -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1f242d" stroke-width="0.75"/>
+    </pattern>
+    <pattern id="majorGrid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#2a303c" stroke-width="1.2"/>
+    </pattern>
+    
+    <!-- Marker arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrow-white" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#e2e8f0" />
+    </marker>
+  </defs>
+
+  <!-- Background Grids -->
+  <rect width="1200" height="850" fill="#0b0f14"/>
+  <rect width="1200" height="850" fill="url(#grid)"/>
+  <rect width="1200" height="850" fill="url(#majorGrid)"/>
+
+  <!-- Title & Header -->
+  <text x="50" y="55" font-size="24" font-weight="700" fill="#ffffff" letter-spacing="1.5">ONYX STAGES</text>
+  <text x="50" y="80" font-size="13" font-weight="500" fill="#94a3b8" letter-spacing="0.5">8.5' × 24' MOBILE BLACKOUT STAGE RIG — ARCHITECTURAL FACTORY BLUEPRINT</text>
+
+  <!-- ==================== DIMENSION LINES ==================== -->
+  <!-- Top 24' 0" Dimension -->
+  <line x1="220" y1="120" x2="890" y2="120" stroke="#f59e0b" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <rect x="520" y="108" width="80" height="24" rx="4" fill="#0b0f14" stroke="#f59e0b" stroke-width="1"/>
+  <text x="560" y="125" font-size="13" font-weight="700" fill="#f59e0b" text-anchor="middle">◀ 24' 0" ▶</text>
+
+  <!-- Left 8' 0" Width Dimension -->
+  <line x1="160" y1="170" x2="160" y2="390" stroke="#f59e0b" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <rect x="125" y="268" width="70" height="24" rx="4" fill="#0b0f14" stroke="#f59e0b" stroke-width="1"/>
+  <text x="160" y="285" font-size="12" font-weight="700" fill="#f59e0b" text-anchor="middle">◀ 8' 0" ▶</text>
+
+  <!-- ==================== MAIN TRAILER SHELL ==================== -->
+  <!-- Main Body Rectangle (Roadside Y:170 to Curbside Y:390, X:220 to X:890) -->
+  <!-- V-Nose starts at X:890 and points to X:970, Y:280 -->
+  <path d="M 220 170 
+           L 890 170 
+           L 970 280 
+           L 890 390 
+           L 220 390 
+           Z" 
+        fill="#131923" stroke="#e2e8f0" stroke-width="3"/>
+
+  <!-- RTP Coin Floor Texture Representation -->
+  <rect x="222" y="172" width="666" height="216" fill="#18202c" opacity="0.8"/>
+
+  <!-- ==================== PARTITION WALL & VIP CABIN ==================== -->
+  <!-- Partition Wall at X:780 -->
+  <line x1="780" y1="170" x2="780" y2="290" stroke="#f8fafc" stroke-width="6"/>
+  <line x1="780" y1="360" x2="780" y2="390" stroke="#f8fafc" stroke-width="6"/>
+  
+  <!-- Partition Door (36" x 78") swinging into main room -->
+  <path d="M 780 290 A 70 70 0 0 1 720 350" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="780" y1="290" x2="730" y2="340" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="735" y="325" font-size="10" font-weight="600" fill="#38bdf8" text-anchor="middle">36"×78" Door</text>
+
+  <!-- Upper Cabinet in V-Nose (X:890 to 965, Y:220 to 340) -->
+  <path d="M 885 210 L 960 280 L 885 350 Z" fill="#243042" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="945" y="275" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle" transform="rotate(90 945 275)">Upper Cabinet</text>
+
+  <!-- Furrion 18K A/C & Heat Unit in V-Nose -->
+  <rect x="805" y="245" width="55" height="70" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="832" y="275" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">A/C</text>
+  <text x="832" y="290" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Heat</text>
+
+  <!-- ==================== EXTERIOR DOORS ==================== -->
+  <!-- Curbside Front Entry Door (X:785 to 845, Y:390) -->
+  <path d="M 785 390 A 60 60 0 0 0 785 450" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="785" y1="390" x2="785" y2="445" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="840" y="420" font-size="10" font-weight="600" fill="#38bdf8">36"×78" Entry Door</text>
+
+  <!-- Roadside Rear Step Well & Door (X:360 to 440, Y:170) -->
+  <rect x="360" y="172" width="75" height="30" fill="#2d3748" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="397" y="192" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Step</text>
+  <path d="M 435 170 A 65 65 0 0 0 435 110" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="435" y1="170" x2="435" y2="115" stroke="#38bdf8" stroke-width="2.5"/>
+
+  <!-- ==================== TV MOUNT & PLUG @ 60" ==================== -->
+  <line x1="600" y1="165" x2="600" y2="175" stroke="#ef4444" stroke-width="6"/>
+  <line x1="600" y1="165" x2="600" y2="105" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <rect x="535" y="75" width="130" height="32" rx="4" fill="#1e1b2e" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="600" y="90" font-size="10" font-weight="700" fill="#f87171" text-anchor="middle">TV Plug @ 60" Floor</text>
+  <text x="600" y="102" font-size="9" font-weight="600" fill="#cbd5e1" text-anchor="middle">Mounting Plate</text>
+
+  <!-- ==================== WINCHES (SOLID RECTANGLES) ==================== -->
+  <!-- Curbside Front Stage Winch -->
+  <rect x="735" y="325" width="36" height="18" rx="2" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="753" y="338" font-size="8" font-weight="800" fill="#000000" text-anchor="middle">WINCH</text>
+
+  <!-- Rear Stage Winches -->
+  <rect x="390" y="315" width="36" height="18" rx="2" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="408" y="328" font-size="8" font-weight="800" fill="#000000" text-anchor="middle">WINCH</text>
+
+  <rect x="445" y="320" width="36" height="18" rx="2" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="463" y="333" font-size="8" font-weight="800" fill="#000000" text-anchor="middle">WINCH</text>
+
+  <!-- ==================== CEILING LIGHT TUBES ==================== -->
+  <!-- 4 Longitudinal Tubes -->
+  <rect x="490" y="210" width="95" height="5" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="630" y="210" width="95" height="5" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="490" y="345" width="95" height="5" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="630" y="345" width="95" height="5" rx="2" fill="#ffffff" opacity="0.9"/>
+
+  <!-- 2 Transverse Tubes -->
+  <rect x="360" y="250" width="5" height="60" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="760" y="235" width="5" height="60" rx="2" fill="#ffffff" opacity="0.9"/>
+  <!-- Front cabin lights -->
+  <rect x="870" y="230" width="5" height="40" rx="2" fill="#ffffff" opacity="0.9"/>
+  <rect x="870" y="290" width="5" height="40" rx="2" fill="#ffffff" opacity="0.9"/>
+
+  <!-- ==================== 16' STAGE & 18' AWNING ==================== -->
+  <!-- 16' Stage Fold-out Deck (X:415 to 765, Y:390 to 520) -->
+  <rect x="415" y="392" width="355" height="125" fill="#2d3748" stroke="#3b82f6" stroke-width="2.5"/>
+  <rect x="415" y="392" width="355" height="125" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="592" y="455" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">16' STAGE PLATFORM</text>
+  <text x="592" y="475" font-size="11" font-weight="500" fill="#93c5fd" text-anchor="middle">(2 Winches • 4 Crank Jack Supports • 2 Sets of Steps • Perimeter Railing)</text>
+
+  <!-- 18' Armless Awning (X:395 to 785, Y:390 to 555) -->
+  <rect x="395" y="392" width="395" height="150" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <text x="592" y="535" font-size="13" font-weight="700" fill="#f59e0b" text-anchor="middle">◀ 18' POWER ARMLESS AWNING ▶</text>
+
+  <!-- Aluminum Stairs Callouts -->
+  <rect x="445" y="520" width="45" height="25" rx="2" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="467" y="537" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">Step 1</text>
+  
+  <rect x="700" y="520" width="45" height="25" rx="2" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="722" y="537" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">Step 2</text>
+
+  <!-- ==================== 8' REAR RAMP / STAGE & 8' AWNING ==================== -->
+  <!-- 8' Ramp Stage (X:130 to 220, Y:170 to 390) -->
+  <rect x="135" y="172" width="85" height="216" fill="#2d3748" stroke="#3b82f6" stroke-width="2.5"/>
+  <text x="177" y="275" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" transform="rotate(-90 177 275)">8' RAMP / STAGE (w/ Railing)</text>
+
+  <!-- 8' Awning (X:105 to 135, Y:170 to 390) -->
+  <rect x="105" y="172" width="30" height="216" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <text x="120" y="275" font-size="11" font-weight="700" fill="#f59e0b" text-anchor="middle" transform="rotate(-90 120 275)">8' AWNING</text>
+
+  <!-- ==================== ELECTRICAL OUTLETS (LEGEND ICONS) ==================== -->
+  <!-- V-Nose Outlets -->
+  <circle cx="920" cy="220" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="920" cy="340" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="830" cy="180" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="840" cy="380" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  
+  <!-- Roadside Outlets -->
+  <circle cx="490" cy="180" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="600" cy="180" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="720" cy="180" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- Curbside Outlets -->
+  <circle cx="370" cy="380" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="770" cy="380" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="800" cy="405" r="5" fill="#06b6d4" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- ==================== BLUEPRINT SPEC SHEET TABLE ==================== -->
+  <rect x="50" y="580" width="1100" height="235" rx="8" fill="#131923" stroke="#2a303c" stroke-width="1.5"/>
+  <text x="75" y="615" font-size="15" font-weight="700" fill="#f59e0b" letter-spacing="1">FACTORY SPECIFICATIONS &amp; BUILDER CONTRACT</text>
+  
+  <!-- Column 1 -->
+  <text x="75" y="645" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Size:</tspan> 8.5' × 24' Deck-Over (8' Interior Height)</text>
+  <text x="75" y="670" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Color:</tspan> Black w/ Full Blackout Package</text>
+  <text x="75" y="695" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Axles / GVWR:</tspan> (2) 7,000 lb Axles w/ Brakes (14k GVWR)</text>
+  <text x="75" y="720" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Wheels &amp; Tires:</tspan> Heavy-Duty Mag Wheels</text>
+  <text x="75" y="745" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Main Stage:</tspan> 16' Motorized (2 Winches, 4 Jacks, 2 Step Sets)</text>
+  <text x="75" y="770" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Rear Stage:</tspan> 8' Ramp Stage (Winch &amp; 2 Crank Jacks)</text>
+
+  <!-- Column 2 -->
+  <text x="450" y="645" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Climate Unit:</tspan> 18,000 BTU Furrion A/C &amp; Heat w/ Remote</text>
+  <text x="450" y="670" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• VIP Cabin:</tspan> V-Nose w/ Upper Cabinetry &amp; 36"×78" Door</text>
+  <text x="450" y="695" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Electrical:</tspan> 100A Service w/ (10) 20A Plugs &amp; (2) GFCI</text>
+  <text x="450" y="720" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• TV Mount:</tspan> Dedicated Backer Plate &amp; Plug @ 60" Height</text>
+  <text x="450" y="745" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Awnings:</tspan> 18' Armless Power Awning + 8' Rear Awning</text>
+  <text x="450" y="770" font-size="12" fill="#cbd5e1"><tspan font-weight="700" fill="#ffffff">• Flooring / Walls:</tspan> RTP Coin Throughout / Charcoal Gray</text>
+
+  <!-- Column 3 (Legend & Financials) -->
+  <rect x="850" y="605" width="280" height="190" rx="6" fill="#0b0f14" stroke="#334155" stroke-width="1"/>
+  <text x="870" y="630" font-size="12" font-weight="700" fill="#f8fafc">BLUEPRINT LEGEND</text>
+  <rect x="870" y="645" width="16" height="10" rx="2" fill="#f59e0b"/>
+  <text x="895" y="654" font-size="11" fill="#cbd5e1">= Electric Winch</text>
+  
+  <circle cx="878" cy="675" r="5" fill="#10b981"/>
+  <text x="895" y="679" font-size="11" fill="#cbd5e1">= 20 Amp Receptacle</text>
+
+  <circle cx="878" cy="700" r="5" fill="#06b6d4"/>
+  <text x="895" y="704" font-size="11" fill="#cbd5e1">= GFCI Receptacle</text>
+
+  <line x1="870" y1="725" x2="890" y2="725" stroke="#ffffff" stroke-width="3"/>
+  <text x="895" y="729" font-size="11" fill="#cbd5e1">= LED Light Tube</text>
+
+  <line x1="865" y1="745" x2="1115" y2="745" stroke="#1e293b" stroke-width="1"/>
+  <text x="870" y="768" font-size="11" font-weight="700" fill="#38bdf8">TRAILER PRICE: $40,957.00</text>
+  <text x="870" y="786" font-size="11" fill="#94a3b8">Terms: 15% Down ($6,143.55) • 10-Week Build</text>
+
+</svg>
